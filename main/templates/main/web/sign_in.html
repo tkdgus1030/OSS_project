@@ -14,12 +14,12 @@
 </tr>
 </table>
 <br>
-    <button>로그인</button>
-<br>
+    <button onclick="location.href='{% url 'main:group_list' %}'">로그인</button>
+<br><br>
 <table>
 <tr>
     <td>아직 회원이 아니신가요?</td>
-    <td><a href="{% url 'main:sign_up' %}">회원가입</a></td>
+    <td><button onclick="location.href='{% url 'main:sign_up' %}'">회원가입</button></td>
 </tr>
 </table>
 {% endblock %}

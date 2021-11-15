@@ -1,0 +1,25 @@
+{% extends 'main/web/base.html' %}
+
+
+{% block body %}
+
+<h1>Group Create</h1>
+    <table style="border:1px solid black;">
+
+    <tr>
+        <td style="border:1px solid blue; width:200px;height:20px;">       김세란       </td>
+    </tr>
+    <tr>
+        <td style="border:1px solid blue; width:200px;height:20px;">       김예린       </td>
+    </tr>
+    <tr>
+        <td style="border:1px solid blue; width:200px;height:20px;">       박상현       </td>
+    </tr>
+    <tr>
+        <td style="border:1px solid blue; width:200px;height:20px;">      +      </td>
+    </tr>
+    </table>
+    <br>
+    <button onclick="location.href='{% url 'main:group_list' %}'">그룹생성하기</button>
+
+{% endblock %}

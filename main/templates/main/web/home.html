@@ -2,8 +2,11 @@
 
 
 {% block body %}
-<h1>payG</h1>
-<a href="{% url 'main:temp_people' %}">로그인없이 계산</a>
-<a href="{% url 'main:sign_in' %}">로그인/회원가입</a>
+<h1>Index</h1>
+
+
+<button onclick="location.href='{% url 'main:temp_people' %}'">로그인없이 계산</button>
+    <br><br>
+<button onclick="location.href='{% url 'main:sign_in' %}'">로그인/회원가입</button>
 
 {% endblock %}

@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'^signIn/$', SignInView.as_view(), name='sign_in'),
     url(r'^signUp/$', SignUpView.as_view(), name='sign_up'),
     url(r'^groupList/$', GroupListView.as_view(), name='group_list'),
+    url(r'^groupCreate/$', GroupCreateView.as_view(), name='group_create'),
     url(r'^historyList/$', HistoryListView.as_view(), name='history'),
     url(r'^historyDetail/$', HistoryDetailView.as_view(), name='history_detail'),
     url(r'^Calculate/$', CalculateView.as_view(), name='calculate'),
