@@ -1,0 +1,25 @@
+{% extends 'main/web/base.html' %}
+
+
+{% block body %}
+
+<table>
+<tr>
+    <td>휴대폰 번호</td>
+    <td><input type="number"></td>
+</tr>
+<tr>
+    <td>비밀번호</td>
+    <td><input type="password"></td>
+</tr>
+</table>
+<br>
+    <button>로그인</button>
+<br>
+<table>
+<tr>
+    <td>아직 회원이 아니신가요?</td>
+    <td><a href="{% url 'main:sign_up' %}">회원가입</a></td>
+</tr>
+</table>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'main/web/base.html' %}
+
+
+{% block body %}
+
+<table>
+<tr>
+    <td>휴대폰 번호</td>
+    <td><input type="number"></td>
+</tr>
+<tr>
+    <td>이름</td>
+    <td><input type="text"></td>
+</tr>
+<tr>
+    <td>비밀번호</td>
+    <td><input type="password"></td>
+</tr>
+<tr>
+    <td>비밀번호 확인</td>
+    <td><input type="password"></td>
+</tr>
+</table>
+<br>
+    <button onClick="location.href='{% url 'main:group_list' %}'">회원가입 및 로그인</button>
+<br>
+
+{% endblock %}

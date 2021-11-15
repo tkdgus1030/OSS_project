@@ -1,0 +1,9 @@
+{% extends 'main/web/base.html' %}
+
+
+{% block body %}
+<h1>payG</h1>
+<a href="{% url 'main:temp_people' %}">로그인없이 계산</a>
+<a href="{% url 'main:sign_in' %}">로그인/회원가입</a>
+
+{% endblock %}
