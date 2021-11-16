@@ -2,9 +2,14 @@
 
 
 {% block body %}
-<h1>Index</h1>
-
-
+    
+    
+<link rel="stylesheet" href="style_home.css">    
+<img src="main_picture.png" class="img-fluid" alt="hi">
+    
+    
+<br>
+    
 <button onclick="location.href='{% url 'main:temp_people' %}'">로그인없이 계산</button>
     <br><br>
 <button onclick="location.href='{% url 'main:sign_in' %}'">로그인/회원가입</button>
