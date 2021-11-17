@@ -2,27 +2,41 @@
 
 
 {% block body %}
+    
+    
+<div class="container-sm" style="width:38%;height:80%;border:1px solid blue;text-align: center">
+<br><br><br><br><br><br>
+  <div class="mb-3 row">
+    <label for="inputPhonenumber" class="col-sm-3 col-form-label">휴대폰 번호</label>
+    <div class="col-sm-9">
+      <input class="form-control bg-light" id="inputPhonenumber">
+    </div>
+  </div>
+  <div class="mb-3 row">  
+    <label for="inputName" class="col-sm-3 col-form-label">이름</label>
+    <div class="col-sm-9">
+      <input class="form-control bg-light" id="inputName">
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="inputPassword" class="col-sm-3 col-form-label">비밀번호</label>
+    <div class="col-sm-9">
+      <input type="password" class="form-control bg-light" id="inputPassword">
+    </div>
+  </div>
+   <div class="mb-3 row">  
+    <label for="inputPasswordCheck" class="col-sm-3 col-form-label">비밀번호 확인</label>
+    <div class="col-sm-9">
+      <input type="password" class="form-control bg-light" id="inputPasswordCheck">
+    </div>
+  </div>
+    <br>
+    <div class="d-grid gap-2">
+        <button type="button" class="btn btn-success text-white rounded-10" onClick="location.href='{% url 'main:group_list' %}'" >회원가입 및 로그인</button>
+    </div>
+    <br>
+    <br><br><br><br><br><br>
+</div>
 
-<table>
-<tr>
-    <td>휴대폰 번호</td>
-    <td><input type="number"></td>
-</tr>
-<tr>
-    <td>이름</td>
-    <td><input type="text"></td>
-</tr>
-<tr>
-    <td>비밀번호</td>
-    <td><input type="password"></td>
-</tr>
-<tr>
-    <td>비밀번호 확인</td>
-    <td><input type="password"></td>
-</tr>
-</table>
-<br>
-    <button onClick="location.href='{% url 'main:group_list' %}'">회원가입 및 로그인</button>
-<br>
 
 {% endblock %}
