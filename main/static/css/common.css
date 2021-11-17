@@ -1,0 +1,16 @@
+table{
+    border: 2px solid black;
+
+}
+
+table tr{
+    border: 2px solid blue;
+}
+
+table tr td{
+    border: 1px solid black;
+}
+
+cursor_effect{
+    cursor:pointer;
+}

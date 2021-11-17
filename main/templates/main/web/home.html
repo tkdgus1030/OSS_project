@@ -1,11 +1,13 @@
 {% extends 'main/web/base.html' %}
-
+{% load static %}
 
 {% block body %}
     
-    
-<link rel="stylesheet" href="style_home.css">    
-<img src="main_picture.png" class="img-fluid" alt="hi">
+{#        <link rel="stylesheet" href="{% static 'css/style_sign_in.css' %}">#}
+
+<link rel="stylesheet" href="{% static 'css/style_home.css' %}">
+
+<img src="{% static 'img/main_picture.png' %}" class="img-fluid" alt="hi">
     
     
 <br>

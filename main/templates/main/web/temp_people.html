@@ -2,6 +2,23 @@
 
 
 {% block body %}
-<h1>Temp People</h1>
+    <div class="border">
+    <h1>인원 추가 페이지</h1>
+    </div>
+    <div class="border">
+         <table class="w-50" style="margin:0px auto;">
+            <tr>
+                <th>(temp)인원 추가</th>
+            </tr>
+             <tr>
+                 <td><button>+</button></td>
+             </tr>
+            </table>
+    </div>
+    <br>
+    <br>
+    <div>
+        <button onclick="location.href='{% url 'main:temp_calculate' %}'">다음</button>
+    </div>
 
 {% endblock %}
