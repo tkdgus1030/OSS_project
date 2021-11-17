@@ -2,35 +2,28 @@
 
 
 {% block body %}
-<link rel="stylesheet" href="../../../static/css/style_sign_in.css">
+<link rel="stylesheet" href="../../../static/css/style.css">
     
-<div class="container-sm" style="width:35%;height:80%;border:1px solid blue;text-align: center">
-<br><br><br><br><br><br>
+<div class="container-sm" style="width:30%;height:80%;text-align: center; margin-top: 200px">
   <div class="mb-3 row">
-    <label for="inputPhonenumber" class="col-sm-3 col-form-label">휴대폰 번호</label>
+    <label for="inputPhonenumber" class="col-sm-3 col-form-label" style="text-align: center">휴대폰 번호</label>
     <div class="col-sm-9">
-      <input type="phonenumber" class="form-control bg-light" id="inputPhonenumber">
+      <input type="phonenumber" class="input_design" id="inputPhonenumber">
     </div>
   </div>
   <div class="mb-3 row">
-    <label for="inputPassword" class="col-sm-3 col-form-label">비밀번호</label>
+    <label for="inputPassword" class="col-sm-3 col-form-label" style="text-align: center">비밀번호</label>
     <div class="col-sm-9">
-      <input type="password" class="form-control bg-light" id="inputPassword">
+      <input type="password" class="input_design" id="inputPassword">
     </div>
   </div>
     <br>
     <div class="d-grid gap-2">
-        <button type="button" class="btn btn-info text-white rounded-10" onclick="location.href='{% url 'main:group_list' %}'">로그인</button>
+        <button type="button" class="btn_design1" onclick="location.href='{% url 'main:group_list' %}'">로그인</button>
     </div>
     <br>
-    <div class="row">
-        <div class="col-md-7" style="text-align: end; line-height: 38px">아직 회원이 아니신가요?</div>
-        <div class="col-6 col-md-4" style="text-align: left">
-            
-            <div class="sign_up_button">
-                <button class="btn btn-white" type="button" onclick="location.href='{% url 'main:sign_up' %}'" style="text-align: start"><b>회원가입</b></button>
-            </div>
-        </div>
+    <div style="text-align: center;">아직 회원이 아니신가요?  
+        <span class="btn btn-white" type="text" onclick="location.href='{% url 'main:sign_up' %}'" style="text-align: start"><b>회원가입</b></span>
     </div>
     <br><br><br><br><br><br>
 </div>
