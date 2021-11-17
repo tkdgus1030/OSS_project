@@ -6,14 +6,15 @@
 {#        <link rel="stylesheet" href="{% static 'css/style.css' %}">#}
 
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
+    
 <img src="{% static 'img/main_picture.png' %}" class="img-fluid" alt="hi">
     
-    
-<br>
-    
-<button onclick="location.href='{% url 'main:temp_people' %}'">로그인없이 계산</button>
-    <br><br>
-<button onclick="location.href='{% url 'main:sign_in' %}'">로그인/회원가입</button>
+<div class="container-sm" style="width:30%;height:80%;text-align: center; border: 1px blue">  
+    <div class="d-grid gap-2">
+        <button class="btn_design1" style="margin-top: 50px" onclick="location.href='{% url 'main:temp_people' %}'">로그인없이 계산</button>
+        <button class="btn_design2"style="margin-top: 30px" onclick="location.href='{% url 'main:sign_in' %}'">로그인/회원가입</button>
+    </div>
+</div>
+
 
 {% endblock %}
