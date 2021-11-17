@@ -4,35 +4,34 @@
 {% block body %}
     
     
-<div class="container-sm" style="width:40%;height:80%;border:1px solid blue;text-align: center">
-<br><br><br><br><br><br>
+<div class="container-sm" style="width:30%;height:80%;text-align: center; margin-top: 160px">
   <div class="mb-3 row">
     <label for="inputPhonenumber" class="col-sm-3 col-form-label">휴대폰 번호</label>
     <div class="col-sm-9">
-      <input class="form-control bg-light" id="inputPhonenumber">
+      <input class="input_design" id="inputPhonenumber">
     </div>
   </div>
   <div class="mb-3 row">  
     <label for="inputName" class="col-sm-3 col-form-label">이름</label>
     <div class="col-sm-9">
-      <input class="form-control bg-light" id="inputName">
+      <input class="input_design" id="inputName">
     </div>
   </div>
   <div class="mb-3 row">
     <label for="inputPassword" class="col-sm-3 col-form-label">비밀번호</label>
     <div class="col-sm-9">
-      <input type="password" class="form-control bg-light" id="inputPassword">
+      <input type="password" class="input_design" id="inputPassword">
     </div>
   </div>
    <div class="mb-3 row">  
     <label for="inputPasswordCheck" class="col-sm-3 col-form-label">비밀번호 확인</label>
     <div class="col-sm-9">
-      <input type="password" class="form-control bg-light" id="inputPasswordCheck">
+      <input type="password" class="input_design" id="inputPasswordCheck">
     </div>
   </div>
     <br>
     <div class="d-grid gap-2">
-        <button type="button" class="btn btn-success text-white rounded-10" onClick="location.href='{% url 'main:group_list' %}'" >회원가입 및 로그인</button>
+        <button type="button" class="btn_design2" onClick="location.href='{% url 'main:group_list' %}'" >회원가입 및 로그인</button>
     </div>
     <br>
     <br><br><br><br><br><br>
