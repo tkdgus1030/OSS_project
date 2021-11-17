@@ -1,0 +1,13 @@
+.form_control {
+    background-color: lightgray;
+}
+
+.login_btn {
+    background-color: #4CB1DE;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    height: 40px;
+
+}

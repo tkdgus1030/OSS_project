@@ -2,9 +2,9 @@
 
 
 {% block body %}
-<link rel="stylesheet" href="../../../static/css/style_sign_in.css">
+<link rel="stylesheet" href="../../../static/css/style.css">
     
-<div class="container-sm" style="width:35%;height:80%;border:1px solid blue;text-align: center">
+<div class="container-sm" style="width:40%;height:80%;border:1px solid blue;text-align: center">
 <br><br><br><br><br><br>
   <div class="mb-3 row">
     <label for="inputPhonenumber" class="col-sm-3 col-form-label">휴대폰 번호</label>
@@ -20,7 +20,7 @@
   </div>
     <br>
     <div class="d-grid gap-2">
-        <button type="button" class="btn btn-info text-white rounded-10" onclick="location.href='{% url 'main:group_list' %}'">로그인</button>
+        <button type="button" class="login_btn" onclick="location.href='{% url 'main:group_list' %}'">로그인</button>
     </div>
     <br>
     <div class="row">
