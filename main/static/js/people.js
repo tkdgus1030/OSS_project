@@ -19,17 +19,17 @@ function savePeople() {
 
 function addToList(person) {
     let div = document.createElement("div");
-    div.className = "people p-1 rounded-2 ps-2 d-flex align-items-center";
+    div.className = "people p-1 rounded-2 ps-2 d-flex align-items-center mb-2 mt-2";
 
     let span = document.createElement("span");
-    span.className = "me-auto";
+    span.className = "me-auto stack_text_design";
     span.textContent = person.name;
     console.log(person.name);
     div.appendChild(span);
 
     let buttonRemove = document.createElement("button");
-    buttonRemove.className = "btn btn-sm btn-danger";
-    buttonRemove.innerHTML = '<i class="bi bi-x"></i>';
+    buttonRemove.className = "btn remove_btn_design";
+    buttonRemove.innerHTML = '<i class="bi bi-x">-</i>';
     div.appendChild(buttonRemove);
 
     buttonRemove.addEventListener("click", () => {

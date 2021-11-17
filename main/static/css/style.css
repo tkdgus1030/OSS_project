@@ -8,6 +8,16 @@
     border-radius: 5px;
 }
 
+.name_input_design {
+    background-color:lightgray;
+    border: none;
+    padding-left: 8px;
+    padding-right: 8px;
+    width: 95%;
+    height: 50px;
+    border-radius: 5px;
+}
+
 .btn_design1 {
     background-color: #4CB1DE;
     border: none;
@@ -37,4 +47,33 @@
 .disabled {
     opacity: 0.6;
     cursor: not-allowed;
+}
+
+.stack_text_design {
+    background-color: #4CB1DE;
+    border: none;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+.add_btn_design {
+    background-color: #60C49D;
+    margin-left: 10px;
+    height: 50px;
+    width: 50px;
+    color: white;
+}
+
+.remove_btn_design {
+    background-color: lightcoral;
+    color: white;
+    height: 50px;
+    width: 50px;
+    margin-left: 10px;
+    margin-right: 7px;
 }
