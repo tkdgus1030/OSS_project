@@ -2,24 +2,36 @@
 
 
 {% block body %}
-
-<table>
-<tr>
-    <td>휴대폰 번호</td>
-    <td><input type="number"></td>
-</tr>
-<tr>
-    <td>비밀번호</td>
-    <td><input type="password"></td>
-</tr>
-</table>
-<br>
-    <button onclick="location.href='{% url 'main:group_list' %}'">로그인</button>
-<br><br>
-<table>
-<tr>
-    <td>아직 회원이 아니신가요?</td>
-    <td><button onclick="location.href='{% url 'main:sign_up' %}'">회원가입</button></td>
-</tr>
-</table>
+<link rel="stylesheet" href="style_sign_in.css">  
+    
+<div class="container-sm" style="width:35%;height:80%;border:1px solid blue;text-align: center">
+<br><br><br><br><br><br>
+  <div class="mb-3 row">
+    <label for="inputPhonenumber" class="col-sm-3 col-form-label">휴대폰 번호</label>
+    <div class="col-sm-9">
+      <input type="phonenumber" class="form-control bg-light" id="inputPhonenumber">
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="inputPassword" class="col-sm-3 col-form-label">비밀 번호</label>
+    <div class="col-sm-9">
+      <input type="password" class="form-control bg-light" id="inputPassword">
+    </div>
+  </div>
+    <br>
+    <div class="d-grid gap-2">
+        <button type="button" class="btn btn-info text-white rounded-10" onclick="location.href='{% url 'main:group_list' %}'">로그인</button>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-7" style="text-align: end; line-height: 38px">아직 회원이 아니신가요?</div>
+        <div class="col-6 col-md-4" style="text-align: left">
+            
+            <div class="sign_up_button">
+                <button class="btn btn-white" type="button" onclick="location.href='{% url 'main:sign_up' %}'" style="text-align: start"><b>회원가입</b></button>
+            </div>
+        </div>
+    </div>
+    <br><br><br><br><br><br>
+</div>
 {% endblock %}
