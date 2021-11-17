@@ -1,16 +1,50 @@
 table{
-    border: 2px solid black;
+    /*border: 2px solid black;*/
 
 }
 
 table tr{
-    border: 2px solid blue;
+    /*border: 2px solid blue;*/
 }
 
 table tr td{
-    border: 1px solid black;
+    /*border: 1px solid black;*/
 }
 
 cursor_effect{
     cursor:pointer;
+}
+
+.cal_table tr{
+    padding:10px;
+    border:10px solid white;
+}
+
+.cal_table tr td:first-child{
+    height:30px;
+    color: lightblue;
+    padding-right:10px;
+}
+.cal_table tr td:not(:first-child){
+    background-color:lightyellow;
+}
+.cal_table tr th:first-child{
+    color: lightblue;
+}
+.cal_table tr th:nth-child(2), .cal_table tr th:nth-child(3){
+    color:black;
+}
+.cal_table tr th{
+     height:30px;
+    color:lightgreen;
+}
+
+.person{
+    padding:10px;
+    flex-grow: 1;
+}
+.checkbox{
+    text-align:center;
+    border:1px solid blue;
+    flex-grow: 1;
 }
