@@ -6,36 +6,32 @@
 
 {% endblock %}
 {% block body %}
-    <div class="border">
-        <h1>인원 추가 페이지</h1>
+    <div class="border" style="margin-top: 100px">
+        <h3>그룹 목록</h3>
     </div>
-    <div class="container-sm" style="width:35%;height:80%;border:10px solid blue;text-align: center">
-    <br><br><br>
+    <div class="container-sm" style="width:35%;height:80%;text-align: center;border: 5px blue">
         <div class="container">
             <div class="d-flex align-items-center mb-2 mt-2">
                 <input
                     type="text"
-                    class="form-control"
+                    class="name_input_design"
                     id="name-input"
                     placeholder="이름을 입력하세요."
                     autofocus
                 />  
-                <button type="button" id="add" class="btn btn-primary ms-1 text-nowrap">
-                    <i class="bi bi-plus"></i> Add
+                <button type="button" id="add" class="btn add_btn_design">
+                    <i class="bi bi-plus"></i> + 
                 </button>
             </div>
         </div>
-        <div class="container">
-            <div id="peopleList" style="width:100%;height:80%;border:5px solid green;text-align: center">
-                <div class="people p-1 rounded-2 ps-2 d-flex align-items-center">
-
-                </div>
+        <div id="peopleList" style="width:100%;text-align: center">
+            <div class="people p-1 rounded-2 ps-2 d-flex align-items-center">
+                
             </div>
         </div>
         <div>
-            <button id="next" onclick="location.href='{% url 'main:temp_calculate' %}'">다음</button>
+            <button id="next" class="btn_design2" style="margin-top: 30px;width: 60%" onclick="location.href='{% url 'main:temp_calculate' %}'">다음</button>
         </div>
-    <br><br><br><br><br><br>  
     </div>
     
     <br>
