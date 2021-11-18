@@ -25,18 +25,34 @@ function add_(ele, value='+'){
         return;
     }
 
+    let checked_boxes = input_tr.find('.checkbox').find('input:checked');
+    let checked_people = [];
+    console.log(checked_boxes)
+    checked_boxes.each(function() {
+        checked_people.push(this.getAttribute('name'));
+    });
+
+    console.log('l:'+checked_people.length);
+
+    if(checked_people.length===0){
+        alert('적어도 한 명을 선택해주세요.');
+        return;
+    }
+
+
 
     let tr = document.createElement('tr');
     tr.append(make_name_td(''));
     tr.append(make_object_td(p_name,object_input.val()));
     tr.append(make_amount_td(p_name,amount_input.val()));
-    tr.append(make_checkbox_td(p_name,''));
+    tr.append(make_checkbox_td(p_name,checked_people));
     tr.append(make_button_td(p_name,'-'));
 
     input_tr.after(tr);
 
-    object_input.val('');
-    amount_input.val('');
+    input_tr.replaceWith(make_input_tr(p_name));
+
+
 
 }
 
@@ -73,17 +89,35 @@ function make_amount_td(ele,value=''){
     }
     return amount;
 }
-function make_checkbox_td(ele, value = []){
+function make_checkbox_td(ele, checked_list = []){
     let checkbox = document.createElement('td');
     checkbox.className="checkbox";
     let checkdiv = document.createElement('div',{class:'checkdiv'});
     checkdiv.className = 'row-vh d-flex flex-row justify-content-between'
-    people.forEach(()=>{
+    console.log('checked_list'+checked_list);
+    if(checked_list.length!==0){
+        console.log('hh');
+        people.forEach((p)=>{
         let div = document.createElement("div");
-        div.className = "checkbox";
-        div.innerText = 'O';
+        div.className = "checkbox form-check";
+        if(checked_list.includes(p)){
+            div.innerHTML = '<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"' + 'name="' + p +'"' + ' checked disabled readonly>';
+        }
+        else{
+            div.innerHTML = '<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"' + 'name="' + p +'"' + ' disabled readonly>';
+        }
+
         checkdiv.append(div);
     })
+    }
+    else{
+        people.forEach((p)=>{
+        let div = document.createElement("div");
+        div.className = "checkbox form-check";
+        div.innerHTML = '<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"' + 'name="' + p +'"' + ' checked>';
+        checkdiv.append(div);
+    })
+    }
     checkbox.append(checkdiv);
     // if(value === []){
     //
@@ -98,9 +132,17 @@ function make_button_td(ele,value='+'){
     let btn = document.createElement('button');
     btn.id = 'btn_'+ele;
     btn.setAttribute('clicked',0)
-    btn.addEventListener("click", () => {
-       add_(btn.id, value);
-    });
+    if(value==='+'){
+        btn.addEventListener("click", () => {
+           add_(btn.id, value);
+        });
+    }
+    else{
+        btn.addEventListener("click",()=>{
+
+        })
+    }
+
     btn.append(document.createTextNode(value));
     button.append(btn);
     return button;
