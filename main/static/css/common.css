@@ -48,6 +48,6 @@ cursor_effect{
     border:1px solid blue;
     flex-grow: 1;
 }
-input{
-    width:20px;
+.pay_object{
+    width:100px;
 }

@@ -1,20 +1,15 @@
+//localStorage에 저장된 사람들 이름을 people 배열에 string요소로 담음.
 let data = JSON.parse(localStorage.getItem("people"));
 let people = data.map((ele)=>{
-    console.log(ele);
-    console.log(ele['name']);
     return ele['name'];
 })
-var spend = {};
-var cal_spend = {}
-people.forEach((ele)=>{
-    spend[ele]=0;
-    cal_spend[ele]=0;
-})
-console.log(spend);
-console.log(cal_spend);
 
 
-function add_(ele, value='+'){
+function del_(btn_obj){
+    btn_obj.parentNode.parentNode.remove();
+}
+
+function add_(ele){
     let p_name = ele.substring(4,);
     let input_tr = $('#'+p_name);
     let object_input = $('#'+p_name+'_object');
@@ -27,18 +22,14 @@ function add_(ele, value='+'){
 
     let checked_boxes = input_tr.find('.checkbox').find('input:checked');
     let checked_people = [];
-    console.log(checked_boxes)
     checked_boxes.each(function() {
         checked_people.push(this.getAttribute('name'));
     });
-
-    console.log('l:'+checked_people.length);
 
     if(checked_people.length===0){
         alert('적어도 한 명을 선택해주세요.');
         return;
     }
-
 
 
     let tr = document.createElement('tr');
@@ -68,7 +59,6 @@ function make_object_td(ele,value=''){
     if(value === ''){
         let object_input = document.createElement('input');
         object_input.id=ele+"_object";
-        // object_input.type=text;
         object.append(object_input);
     }
     else{
@@ -78,11 +68,9 @@ function make_object_td(ele,value=''){
 }
 function make_amount_td(ele,value=''){
     let amount = document.createElement('td');
+    amount.style= 'padding-right:10px;'
     if (value === ''){
-        let amount_input = document.createElement('input');
-        amount_input.id=ele+"_amount";
-        // amount_input.type=number;
-        amount.append(amount_input);
+        amount.innerHTML = '<input id="'+ ele + '_amount' +'"'+ 'type="number">' + '원';
     }
     else{
         amount.append(value);
@@ -94,9 +82,7 @@ function make_checkbox_td(ele, checked_list = []){
     checkbox.className="checkbox";
     let checkdiv = document.createElement('div',{class:'checkdiv'});
     checkdiv.className = 'row-vh d-flex flex-row justify-content-between'
-    console.log('checked_list'+checked_list);
     if(checked_list.length!==0){
-        console.log('hh');
         people.forEach((p)=>{
         let div = document.createElement("div");
         div.className = "checkbox form-check";
@@ -104,9 +90,9 @@ function make_checkbox_td(ele, checked_list = []){
             div.innerHTML = '<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"' + 'name="' + p +'"' + ' checked disabled readonly>';
         }
         else{
-            div.innerHTML = '<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"' + 'name="' + p +'"' + ' disabled readonly>';
+            div.innerHTML =
+                '<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"' + 'name="' + p +'"' + ' disabled readonly>';
         }
-
         checkdiv.append(div);
     })
     }
@@ -119,30 +105,22 @@ function make_checkbox_td(ele, checked_list = []){
     })
     }
     checkbox.append(checkdiv);
-    // if(value === []){
-    //
-    // }
-    // else{
-    //
-    // }
     return checkbox;
 }
 function make_button_td(ele,value='+'){
     let button = document.createElement('td');
     let btn = document.createElement('button');
-    btn.id = 'btn_'+ele;
-    btn.setAttribute('clicked',0)
     if(value==='+'){
         btn.addEventListener("click", () => {
-           add_(btn.id, value);
+            btn.id = 'btn_'+ele;
+           add_(btn.id);
         });
     }
-    else{
-        btn.addEventListener("click",()=>{
-
+    else if(value==='-'){
+        btn.addEventListener("click",(e)=>{
+            del_(e.target);
         })
     }
-
     btn.append(document.createTextNode(value));
     button.append(btn);
     return button;
@@ -150,6 +128,7 @@ function make_button_td(ele,value='+'){
 function make_input_tr(ele){
         //tr
         let tr = document.createElement('tr');
+        //input_tr의 경우 각 사람의 이름을 id로 한다.
         tr.id = ele;
         //name_column
         tr.append(make_name_td(ele));
@@ -164,23 +143,13 @@ function make_input_tr(ele){
         return tr;
 }
 function setTable() {
-    let data = JSON.parse(localStorage.getItem("people"));
-    // console.log(data);
-    let people = data.map((ele)=>{
-        console.log(ele);
-        console.log(ele['name']);
-        return ele['name'];
-    })
-    // console.log(people);
-
-    let first_row = $('#people_list');
-
+    let first_row_people_list = $('#people_list');
     people.forEach((ele)=>{
-        //first row div append
         let div = document.createElement("div");
         div.className = "person";
         div.innerText = ele;
-        first_row.append(div);
+        first_row_people_list.append(div);
+
         let tr = make_input_tr(ele);
         $('.cal_table').append(tr);
     })
