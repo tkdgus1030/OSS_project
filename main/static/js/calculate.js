@@ -6,114 +6,124 @@ let people = data.map((ele)=>{
 
 
 function del_(btn_obj){
-    btn_obj.parentNode.parentNode.remove();
+    let del_tr_obj = btn_obj.parentNode.parentNode;
+    //remove data in localStorage
+
+    //tr 삭제
+    del_tr_obj.remove();
 }
 
-function add_(ele){
-    let p_name = ele.substring(4,);
-    let input_tr = $('#'+p_name);
-    let object_input = $('#'+p_name+'_object');
-    let amount_input = $('#'+p_name+'_amount');
+function add_(name, btn_obj){
+    let input_tr = btn_obj.parentNode.parentNode;
+    let object_input = input_tr.children[1].children[0];
+    let amount_input = input_tr.children[2].children[0];
+    let checked_boxes = input_tr.children[3].children[0].childNodes;
 
-    if(!object_input.val()||!amount_input.val()){
+    //validation
+    if(!object_input.value||!amount_input.value){
         alert('결제 대상과 금액을 모두 입력하세요');
         return;
     }
-
-    let checked_boxes = input_tr.find('.checkbox').find('input:checked');
     let checked_people = [];
-    checked_boxes.each(function() {
-        checked_people.push(this.getAttribute('name'));
-    });
+    for(let i=0;i<checked_boxes.length;i++){
+        let check_input = checked_boxes[i].children[0]
+        if(check_input.checked){
+            checked_people.push(check_input.name);
+        }
 
+    }
     if(checked_people.length===0){
         alert('적어도 한 명을 선택해주세요.');
         return;
     }
 
+    //save to localStorage
+    console.log(checked_people);
 
+    //append to table as tr
     let tr = document.createElement('tr');
     tr.append(make_name_td(''));
-    tr.append(make_object_td(p_name,object_input.val()));
-    tr.append(make_amount_td(p_name,amount_input.val()));
-    tr.append(make_checkbox_td(p_name,checked_people));
-    tr.append(make_button_td(p_name,'-'));
+    tr.append(make_object_td(object_input.value));
+    tr.append(make_amount_td(amount_input.value));
+    tr.append(make_checkbox_td(checked_people));
+    tr.append(make_button_td(name,'-'));
 
     input_tr.after(tr);
 
-    input_tr.replaceWith(make_input_tr(p_name));
-
-
+    //initialize input tr
+    input_tr.replaceWith(make_input_tr(name));
 
 }
 
-function make_name_td(ele){
-    let name = document.createElement('td');
+function make_name_td(name){
+    let name_td = document.createElement('td');
     let name_div = document.createElement('div');
-    name_div.append(ele);
-    name.append(name_div);
-    return name;
+    name_div.append(name);
+    name_td.append(name_div);
+    return name_td;
 }
-function make_object_td(ele,value=''){
-    let object = document.createElement('td');
+
+//value가 ''인 경우 input을 받는 td를 만든다. validation은 호출 전에수행한다.
+function make_object_td(value=''){
+    let object_td = document.createElement('td');
     if(value === ''){
         let object_input = document.createElement('input');
-        object_input.id=ele+"_object";
-        object.append(object_input);
+        object_td.append(object_input);
     }
     else{
-        object.append(value);
+        object_td.append(value);
     }
-    return object;
+    return object_td;
 }
-function make_amount_td(ele,value=''){
-    let amount = document.createElement('td');
-    amount.style= 'padding-right:10px;'
+//value가 ''인 경우 input을 받는 td를 만든다. validation은 호출 전에수행한다.
+function make_amount_td(value=''){
+    let amount_td = document.createElement('td');
+    amount_td.style= 'padding-right:10px;'
     if (value === ''){
-        amount.innerHTML = '<input id="'+ ele + '_amount' +'"'+ 'type="number">' + '원';
+        amount_td.innerHTML = '<input type="number">' + '원';
     }
     else{
-        amount.append(value);
+        amount_td.innerHTML = value;
     }
-    return amount;
+    return amount_td;
 }
-function make_checkbox_td(ele, checked_list = []){
-    let checkbox = document.createElement('td');
-    checkbox.className="checkbox";
-    let checkdiv = document.createElement('div',{class:'checkdiv'});
-    checkdiv.className = 'row-vh d-flex flex-row justify-content-between'
+//checked_list ''인 경우 input을 받는 td를 만든다. validation은 호출 전에수행한다.
+function make_checkbox_td(checked_list = []){
+    let checkbox_td = document.createElement('td');
+    checkbox_td.className="checkbox";
+    let checkbox_div = document.createElement('div');
+    checkbox_div.className = 'row-vh d-flex flex-row justify-content-between'
     if(checked_list.length!==0){
         people.forEach((p)=>{
-        let div = document.createElement("div");
-        div.className = "checkbox form-check";
-        if(checked_list.includes(p)){
-            div.innerHTML = '<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"' + 'name="' + p +'"' + ' checked disabled readonly>';
-        }
-        else{
-            div.innerHTML =
-                '<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"' + 'name="' + p +'"' + ' disabled readonly>';
-        }
-        checkdiv.append(div);
-    })
+            let div = document.createElement("div");
+            div.className = "checkbox form-check";
+            if(checked_list.includes(p)){
+                div.innerHTML = '<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"' + 'name="' + p +'"' + ' checked disabled readonly>';
+            }
+            else{
+                div.innerHTML =
+                    '<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"' + 'name="' + p +'"' + ' disabled readonly>';
+            }
+            checkbox_div.append(div);
+        })
     }
     else{
         people.forEach((p)=>{
-        let div = document.createElement("div");
-        div.className = "checkbox form-check";
-        div.innerHTML = '<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"' + 'name="' + p +'"' + ' checked>';
-        checkdiv.append(div);
-    })
+            let div = document.createElement("div");
+            div.className = "checkbox form-check";
+            div.innerHTML = '<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"' + 'name="' + p +'"' + ' checked>';
+            checkbox_div.append(div);
+        })
     }
-    checkbox.append(checkdiv);
-    return checkbox;
+    checkbox_td.append(checkbox_div);
+    return checkbox_td;
 }
-function make_button_td(ele,value='+'){
-    let button = document.createElement('td');
+function make_button_td(name,value='+'){
+    let button_td = document.createElement('td');
     let btn = document.createElement('button');
     if(value==='+'){
-        btn.addEventListener("click", () => {
-            btn.id = 'btn_'+ele;
-           add_(btn.id);
+        btn.addEventListener("click", (e) => {
+           add_(name,e.target);
         });
     }
     else if(value==='-'){
@@ -122,24 +132,24 @@ function make_button_td(ele,value='+'){
         })
     }
     btn.append(document.createTextNode(value));
-    button.append(btn);
-    return button;
+    button_td.append(btn);
+    return button_td;
 }
-function make_input_tr(ele){
+function make_input_tr(name){
         //tr
         let tr = document.createElement('tr');
         //input_tr의 경우 각 사람의 이름을 id로 한다.
-        tr.id = ele;
+        tr.id = name;
         //name_column
-        tr.append(make_name_td(ele));
+        tr.append(make_name_td(name));
         //object_column
-        tr.append(make_object_td(ele));
+        tr.append(make_object_td());
         //amount_column
-        tr.append(make_amount_td(ele));
+        tr.append(make_amount_td());
         //checkbox_column
-        tr.append(make_checkbox_td(ele));
+        tr.append(make_checkbox_td());
         //button_column
-        tr.append(make_button_td(ele));
+        tr.append(make_button_td(name));
         return tr;
 }
 function setTable() {
