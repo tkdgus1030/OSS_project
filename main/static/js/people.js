@@ -16,7 +16,7 @@ window.addEventListener("load", () => {
 });
 function next(e){
     let url = e.getAttribute('url')
-    if(localStorage.getItem('people')){
+    if(people.length!==0){
         location.href = url;
     }else{
         alert('사람을 추가하세요');
@@ -25,7 +25,6 @@ function next(e){
 
 
 function savePeople() {
-    console.log(people);
     localStorage.setItem("people", JSON.stringify(people));
 }
 
