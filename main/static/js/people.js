@@ -3,14 +3,26 @@ const Type = {
 };
 let people = [];
 
-
-function loadPeople() {
-    let lastPeople = localStorage.getItem("people");
-    if (!lastPeople) return;
-
-    people = JSON.parse(lastPeople);
-    people.forEach(addToList);
+// function loadPeople() {
+//     let lastPeople = localStorage.getItem("people");
+//     if (!lastPeople) return;
+//
+//     people = JSON.parse(lastPeople);
+//     people.forEach(addToList);
+// }
+window.addEventListener("load", () => {
+    // loadPeople();
+    localStorage.clear();
+});
+function next(e){
+    let url = e.getAttribute('url')
+    if(localStorage.getItem('people')){
+        location.href = url;
+    }else{
+        alert('사람을 추가하세요');
+    }
 }
+
 
 function savePeople() {
     console.log(people);
@@ -46,9 +58,7 @@ function addToList(person) {
 
 
 
-window.addEventListener("load", () => {
-    // loadPeople();
-});
+
 
 let button = document.querySelector("#add");
 let input = document.querySelector("#name-input");
