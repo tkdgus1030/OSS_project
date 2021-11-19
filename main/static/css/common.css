@@ -48,3 +48,6 @@ cursor_effect{
     border:1px solid blue;
     flex-grow: 1;
 }
+.pay_object{
+    width:100px;
+}
