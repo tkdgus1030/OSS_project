@@ -100,12 +100,13 @@ function make_checkbox_td(checked_list = []){
         people.forEach((p)=>{
             let div = document.createElement("div");
             div.className = "checkbox form-check" ;
+            div.style.marginLeft = "20px"
             if(checked_list.includes(p)){
-                div.innerHTML = '<input class="form-check-input checkbox_img" type="checkbox" value="" id="flexCheckChecked"' + 'name="' + p +'"' + ' checked disabled readonly>';
+                div.innerHTML = '<input class="form-check-input" style="background-color: #60C49D; border: none" type="checkbox" value="" id="flexCheckChecked"' + 'name="' + p +'"' + ' checked disabled readonly>';
             }
             else{
                 div.innerHTML =
-                    '<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"' + 'name="' + p +'"' + ' disabled readonly>';
+                    '<input class="form-check-input" style="border: none" type="checkbox" value="" id="flexCheckChecked"' + 'name="' + p +'"' + ' disabled readonly>';
             }
             checkbox_div.append(div);
         })
@@ -114,7 +115,8 @@ function make_checkbox_td(checked_list = []){
         people.forEach((p)=>{
             let div = document.createElement("div");
             div.className = "checkbox form-check";
-            div.innerHTML = '<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"' + 'name="' + p +'"' + ' checked>';
+            div.style.marginLeft = "20px"
+            div.innerHTML = '<input class="form-check-input" style="background-color: #60C49D; border: none" type="checkbox" id="flexCheckChecked"' + 'name="' + p +'"' + ' checked>';
             checkbox_div.append(div);
         })
     }
