@@ -8,6 +8,16 @@
     border-radius: 5px;
 }
 
+.input_num_design {
+    background-color:lightgray;
+    border: none;
+    padding-left: 8px;
+    padding-right: 8px;
+    width: 85%;
+    height: 40px;
+    border-radius: 5px;
+}
+
 .name_input_design {
     background-color:lightgray;
     border: none;
@@ -16,6 +26,11 @@
     width: 95%;
     height: 50px;
     border-radius: 5px;
+}
+
+.calculator_input_design {
+    background-color:lightgray;
+    border: none;
 }
 
 .btn_design1 {
@@ -76,4 +91,9 @@
     width: 50px;
     margin-left: 10px;
     margin-right: 7px;
+}
+
+
+.checkbox_img {
+    background-image: url("/main/static/img/checkbox_checked.png");
 }
