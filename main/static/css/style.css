@@ -94,6 +94,7 @@
 }
 
 
-.checkbox_img {
-    background-image: url("/main/static/img/checkbox_checked.png");
+.checkbox_design input[type="checkbox"] {
+    cursor: pointer;
+    background-color: #60C49D;
 }

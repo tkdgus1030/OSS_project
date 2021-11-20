@@ -45,7 +45,6 @@ cursor_effect{
 }
 .checkbox{
     text-align:center;
-    border:1px solid blue;
     flex-grow: 1;
 }
 .pay_object{
