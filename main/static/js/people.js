@@ -87,9 +87,3 @@ input.addEventListener("keydown",function(e){
         button.click();
     }
 } );
-
-// let next = document.querySelector("#next");
-// next.addEventListener('click',()=>{
-//     localStorage.setItem('people',JSON.stringify(people));
-//     location.href=""
-// })

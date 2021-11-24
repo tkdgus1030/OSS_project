@@ -40,6 +40,8 @@ function add_(name, btn_obj){
     //save to localStorage
     console.log(checked_people);
 
+    // localStorage.setItem()
+
     //append to table as tr
     let tr = document.createElement('tr');
     tr.append(make_name_td(''));
