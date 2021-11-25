@@ -66,8 +66,10 @@ function make_name_td(name){
 //value가 ''인 경우 input을 받는 td를 만든다. validation은 호출 전에수행한다.
 function make_object_td(value=''){
     let object_td = document.createElement('td');
+    
     if(value === ''){
         let object_input = document.createElement('input');
+        object_input.className = "input_design";
         object_td.append(object_input);
     }
     else{
@@ -80,7 +82,8 @@ function make_amount_td(value=''){
     let amount_td = document.createElement('td');
     amount_td.style= 'padding-right:10px;'
     if (value === ''){
-        amount_td.innerHTML = '<input type="number">' + '원';
+        amount_td.innerHTML = '<input class="input_design" type="number" placeholder="숫자(원₩)를 입력하세요.">';
+        amount_td.className = "calculator_input_design";
     }
     else{
         amount_td.innerHTML = value;
@@ -96,13 +99,14 @@ function make_checkbox_td(checked_list = []){
     if(checked_list.length!==0){
         people.forEach((p)=>{
             let div = document.createElement("div");
-            div.className = "checkbox form-check";
+            div.className = "checkbox form-check" ;
+            div.style.marginLeft = "20px"
             if(checked_list.includes(p)){
-                div.innerHTML = '<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"' + 'name="' + p +'"' + ' checked disabled readonly>';
+                div.innerHTML = '<input class="form-check-input" style="background-color: #60C49D; border: none" type="checkbox" value="" id="flexCheckChecked"' + 'name="' + p +'"' + ' checked disabled readonly>';
             }
             else{
                 div.innerHTML =
-                    '<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"' + 'name="' + p +'"' + ' disabled readonly>';
+                    '<input class="form-check-input" style="border: none" type="checkbox" value="" id="flexCheckChecked"' + 'name="' + p +'"' + ' disabled readonly>';
             }
             checkbox_div.append(div);
         })
@@ -111,7 +115,8 @@ function make_checkbox_td(checked_list = []){
         people.forEach((p)=>{
             let div = document.createElement("div");
             div.className = "checkbox form-check";
-            div.innerHTML = '<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"' + 'name="' + p +'"' + ' checked>';
+            div.style.marginLeft = "20px"
+            div.innerHTML = '<input class="form-check-input" style="background-color: #60C49D; border: none" type="checkbox" id="flexCheckChecked"' + 'name="' + p +'"' + ' checked>';
             checkbox_div.append(div);
         })
     }
@@ -121,6 +126,7 @@ function make_checkbox_td(checked_list = []){
 function make_button_td(name,value='+'){
     let button_td = document.createElement('td');
     let btn = document.createElement('button');
+    btn.className = "btn add_btn_design";
     if(value==='+'){
         btn.addEventListener("click", (e) => {
            add_(name,e.target);
@@ -130,6 +136,7 @@ function make_button_td(name,value='+'){
         btn.addEventListener("click",(e)=>{
             del_(e.target);
         })
+        btn.style.backgroundColor="lightcoral";
     }
     btn.append(document.createTextNode(value));
     button_td.append(btn);

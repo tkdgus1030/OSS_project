@@ -22,21 +22,21 @@ cursor_effect{
 
 .cal_table tr td:first-child{
     height:30px;
-    color: lightblue;
+    color: #4CB1DE;
     padding-right:10px;
 }
 .cal_table tr td:not(:first-child){
-    background-color:lightyellow;
+    background-color:white;
 }
 .cal_table tr th:first-child{
-    color: lightblue;
+    color: #4CB1DE;
 }
 .cal_table tr th:nth-child(2), .cal_table tr th:nth-child(3){
-    color:black;
+    color:#606060;
 }
 .cal_table tr th{
      height:30px;
-    color:lightgreen;
+    color:#60C49D;
 }
 
 .person{
@@ -45,7 +45,6 @@ cursor_effect{
 }
 .checkbox{
     text-align:center;
-    border:1px solid blue;
     flex-grow: 1;
 }
 .pay_object{
