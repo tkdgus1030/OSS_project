@@ -49,6 +49,7 @@
     useridpw=["",""]
     useridpw[0]=document.querySelector("#inputPhonenumber").value;
     useridpw[1]=document.querySelector("#inputPassword").value;
+    //console.log(useridpw_raw);
     if (useridpw[0]==="" || useridpw[1]===""){
       document.querySelector("#exist").textContent="올바른 휴대폰 번호와 비밀빈호를 입력하십시오";
       btn.setAttribute("onClick", "");
