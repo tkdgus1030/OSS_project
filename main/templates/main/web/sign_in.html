@@ -33,16 +33,19 @@
     <br><br><br><br><br><br>
 </div>
 <script>
-  let temp=[['123','1234']];
+  /*let temp=[];
+  let user1={};
+  user1.idpw=['123','1234'];
+  user1.name='psh';
+  user1.group=['oss'];
+  temp.push(user1);
   localStorage.setItem("userid_database", JSON.stringify(temp));
+  */
   let curuseridpw = localStorage.getItem("curuser");
         if (curuseridpw){
           let useridpw= JSON.parse(curuseridpw);
           document.querySelector("#inputPhonenumber").value=useridpw[0];
           document.querySelector("#inputPassword").value=useridpw[1];
-        }
-        else{
-          useridpw=[];
         }
   let user_database=localStorage.getItem("userid_database");
   let useridpw_database;
@@ -63,7 +66,7 @@
       document.querySelector("#exist").textContent="올바른 휴대폰 번호와 비밀빈호를 입력하십시오.";
       btn.setAttribute("onClick", "");
     }
-    else if( useridpw_database.some(userdata => JSON.stringify(userdata)===JSON.stringify(useridpw) )){
+    else if( useridpw_database.some(userdata => JSON.stringify(userdata.idpw)===JSON.stringify(useridpw) )){
       
       btn.setAttribute("onClick", "location.href='{% url 'main:group_list' %}'");
       console.log(document.querySelector(".btn_design1").onclick);
@@ -71,7 +74,7 @@
       localStorage.setItem("curuser", JSON.stringify(useridpw));
     }
     else{
-      document.querySelector("#exist").textContent="휴대폰 번호와 비밀번호가 일치하지 않습니다.";
+      document.querySelector("#exist").textContent="휴대폰 번호와 비밀번호가 일치하지 않거나 존재하지 않는 계정입니다.";
       btn.setAttribute("onClick", "");
       localStorage.setItem("curuser", JSON.stringify(useridpw));
     }
