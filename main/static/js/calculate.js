@@ -1,13 +1,55 @@
+function createArray(rows, columns) {
+    var arr = [];
+    for (var i = 0; i < rows; i++) {
+            arr.push([]);
+        for(var j=0;j<columns;j++){
+            arr[i].push([]);
+        }
+    }
+    return arr;
+}
+
+
+
 //localStorage에 저장된 사람들 이름을 people 배열에 string요소로 담음.
-let data = JSON.parse(localStorage.getItem("people"));
-let people = data.map((ele)=>{
-    return ele['name'];
-})
+let people = JSON.parse(localStorage.getItem("people"));
+var res_table = createArray(people.length, people.length);
+for(let i=0;i<people.length;i++){
+    for(let j=0; j< people < length; j++)
+    {
+        res_table[i][j]=[];
+    }
+}
 
+function saveRes(){
+    console.log(res_table);
+    localStorage.setItem("resTable", JSON.stringify(res_table));
+};
 
-function del_(btn_obj){
+function del_(name, btn_obj){
     let del_tr_obj = btn_obj.parentNode.parentNode;
-    //remove data in localStorage
+    let checked_boxes = del_tr_obj.children[3].children[0].childNodes;
+    let object_txt = del_tr_obj.children[1].innerText;
+    let amount_float = parseFloat(del_tr_obj.children[2].innerText);
+
+
+    let checked_people = [];
+    for(let i=0;i<checked_boxes.length;i++){
+        let check_input = checked_boxes[i].children[0]
+        if(check_input.checked){
+            checked_people.push(check_input.name);
+        }
+    }
+
+    // remove data in localStorage
+    let from = people.indexOf(name);
+    let n = checked_people.length;
+    checked_people.forEach((p)=>{
+        let to = people.indexOf(p)
+        let ele = {'object':object_txt ,'amount':amount_float};
+        res_table[from][to].pop(ele);
+    });
+    saveRes();
 
     //tr 삭제
     del_tr_obj.remove();
@@ -39,6 +81,16 @@ function add_(name, btn_obj){
 
     //save to localStorage
     console.log(checked_people);
+    let from = people.indexOf(name);
+    let n = checked_people.length;
+    checked_people.forEach((p)=>{
+        let to = people.indexOf(p)
+        let amount = amount_input.value / n;
+        let object = object_input.value;
+        let ele = {'object':object ,'amount':amount};
+        res_table[from][to].push(ele);
+    });
+    saveRes();
 
     // localStorage.setItem()
 
@@ -136,7 +188,7 @@ function make_button_td(name,value='+'){
     }
     else if(value==='-'){
         btn.addEventListener("click",(e)=>{
-            del_(e.target);
+            del_(name, e.target);
         })
         btn.style.backgroundColor="lightcoral";
     }
@@ -173,4 +225,65 @@ function setTable() {
         $('.cal_table').append(tr);
     })
 }
+function result(){
+    $('.res_table').html(' <tr>\n' +
+        '                <th>이름</th>\n' +
+        '                <th>결제한 금액</th>\n' +
+        '                <th>사용 금액</th>\n' +
+        '                <th>총</th>\n' +
+        '            </tr>');
+
+    for(let p1 = 0 ; p1 < people.length; p1++){
+        let tr = document.createElement('tr');
+        let name_td = document.createElement('td');
+        let name_div = document.createElement('div');
+        name_div.append(people[p1]);
+        name_td.append(name_div);
+        let td2 = document.createElement('td');
+        let td2_div = document.createElement('div');
+        let res1= 0;
+        res_table[p1].forEach((arr)=>{
+            arr.forEach((ele)=>{
+                res1 += ele.amount;
+            })
+        })
+        td2_div.append(res1);
+        td2.append(td2_div);
+        let td3 = document.createElement('td');
+        let td3_div = document.createElement('div');
+        let res2 = 0;
+        for(let p2 =0;p2< people.length;p2++){
+            res_table[p2][p1].forEach((ele)=>{
+                res2 += ele.amount;
+            })
+        }
+        td3_div.append(res2);
+        td3.append(td3_div);
+        let td4 = document.createElement('td');
+        let td4_div = document.createElement('div');
+        let res3 = res1 - res2;
+        td4_div.append(res3);
+        td4.append(td4_div);
+        tr.append(name_td);
+        tr.append(td2);
+        tr.append(td3);
+        tr.append(td4);
+        $('.res_table').append(tr);
+    }
+}
+window.addEventListener("load", () => {
+    people = JSON.parse(localStorage.getItem("people"));
+    localStorage.clear();
+    res_table = createArray(people.length, people.length);
+    for(let i=0;i<people.length;i++){
+        for(let j=0; j< people < length; j++)
+        {
+            res_table[i][j]=[];
+        }
+    }
+    saveRes();
+    localStorage.setItem("people", JSON.stringify(people));
+
+
+});
 
