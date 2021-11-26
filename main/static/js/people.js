@@ -15,7 +15,7 @@ window.addEventListener("load", () => {
     localStorage.clear();
 });
 function next(e){
-    let url = e.getAttribute('url')
+    let url = e.getAttribute('url');
     if(people.length!==0){
         location.href = url;
     }else{
@@ -25,17 +25,17 @@ function next(e){
 
 
 function savePeople() {
+
     localStorage.setItem("people", JSON.stringify(people));
 }
 
-function addToList(person) {
+function addToList(person_name) {
     let div = document.createElement("div");
     div.className = "people p-1 rounded-2 ps-2 d-flex align-items-center mb-2 mt-2";
 
     let span = document.createElement("span");
     span.className = "me-auto stack_text_design";
-    span.textContent = person.name;
-    console.log(person.name);
+    span.textContent = person_name;
     div.appendChild(span);
 
     let buttonRemove = document.createElement("button");
@@ -45,13 +45,12 @@ function addToList(person) {
 
     buttonRemove.addEventListener("click", () => {
         div.remove();
-        people = people.filter((t) => t !== person);
+        people = people.filter((t) => t !== person_name);
         savePeople();
     });
 
 
     let list = document.querySelector("#peopleList");
-    console.log(div);
     list.appendChild(div);
 }
 
@@ -66,17 +65,17 @@ let input = document.querySelector("#name-input");
 let add_person =() => {
     let text = input.value;
 
-    if (!text.length) return;
+    if (!text.length){
+        alert('이름을 입력하세요.');
+        return;
+    }
 
-    let person = {
-        name: text,
-        // type: Type.Name,
-    };
+    let person_name = text;
 
-    people.push(person);
+    people.push(person_name);
     savePeople();
 
-    addToList(person);
+    addToList(person_name);
 
 
     input.value="";
@@ -87,9 +86,3 @@ input.addEventListener("keydown",function(e){
         button.click();
     }
 } );
-
-// let next = document.querySelector("#next");
-// next.addEventListener('click',()=>{
-//     localStorage.setItem('people',JSON.stringify(people));
-//     location.href=""
-// })
