@@ -25,7 +25,7 @@
     <nav class="navbar navbar-light bg-light">
       <div class="container">
           <span style="cursor:pointer;" class="navbar-brand mb-0 h1 pe-auto border">Pay G</span>
-          <button id="reset" class="download btn btn-sm btn-danger">Download</button>
+          <button  id="usernameshow" class="download btn btn-sm btn-primary" ></button>
       </div>
     </nav>
 </div>
@@ -38,6 +38,11 @@
 </div>
 
 <script>
+    document.getElementById("usernameshow").style.display = "none";
+    document.getElementById("usernameshow").disabled = true;
+    let curusername = localStorage.getItem("curusername");
+    document.getElementById("usernameshow").textContent=curusername;
+    document.querySelector("#usernameshow").setAttribute("onClick", "location.href='{% url 'main:group_list' %}'");
     /*let data = localStorage.getItem("datas");
         if (!data) data=[2];
         else data = JSON.parse(data);
