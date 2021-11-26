@@ -16,28 +16,36 @@
     </div>
     <br><br><br><br><br><br>
 <script>
-    let groupdata = JSON.parse(localStorage.getItem("groupdata"));
     let curuser = JSON.parse(localStorage.getItem("curuser"));
+    let curusername_grouplist=JSON.parse(localStorage.getItem("curusername"));
     let userdata = JSON.parse(localStorage.getItem("userid_database"));
-    let useridx;
-    userdata.forEach((element,i) => {
-        if (element.idpw[0]===curuser[0]){
-            useridx=i;
-        }
-    });
-    let usergrouplist=userdata[useridx];
-    //usergrouplist.forEach(group =>{
-    [123,456,789].forEach(group =>{
+    let groupdatabase = JSON.parse(localStorage.getItem("group_database"));
+    let curusersGroups=[];
+    for (i in groupdatabase){
+        if(groupdatabase[i].member.some((member_)=>{
+            return member_[0]===curuser[0] && member_[1]===curusername_grouplist;
+        })) curusersGroups.push([groupdatabase[i].name,i])
+    }
+    //console.log(groupdatabase)
+    curusersGroups.forEach(group =>{
         let tr = document.createElement("tr");
-        tr.textContent = group;
-        //tr.style="border:1px solid blue; width:200px;height:20px;";
+        tr.textContent = group[0];
+        tr.id="list"+group[1];
+        tr.className="showlist"
         tr.setAttribute("onClick", "location.href='{% url 'main:history' %}'");
+        //tr.style="border:1px solid blue; width:200px;height:20px;";
+        
         localStorage.setItem("showinghistory", JSON.stringify(group));
         document.querySelector("#group_lists").appendChild(tr)
-    }
 
-    )
-    
+    })
+    document.querySelectorAll(".showlist").forEach(gotolist => {
+		gotolist.addEventListener("click", () => {
+            //console.log(gotolist.id)
+            localStorage.setItem("curlistshow",JSON.stringify(gotolist.id));
+            
+        });
+    });
 			
 
 			
