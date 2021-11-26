@@ -53,7 +53,7 @@
   else {
     useridpw_database = [];
   }
-  //onclick="location.href='{% url 'main:group_list' %}'" 
+  
   btn = document.querySelector(".btn_design1");
   btn.addEventListener("click", () => {
     useridpw=["",""]
@@ -66,9 +66,18 @@
     }
     else if( useridpw_database.some(userdata => JSON.stringify(userdata.idpw)===JSON.stringify(useridpw) )){
       
-      btn.setAttribute("onClick", "location.href='{% url 'main:group_list' %}'");
-      console.log(document.querySelector(".btn_design1").onclick);
-      btn.click();
+      location.href='{% url 'main:group_list' %}'
+      let curusername= useridpw_database.filter((userdata) => {
+        return userdata.idpw[0]===useridpw[0]
+      })[0].name;
+      /*for(i in useridpw_database){
+        console.log(useridpw_database[i],1)
+        if(useridpw_database[i].idpw[0]===useridpw[0]) {
+          curusername=userdata.name;
+        }
+      }*/
+      //console.log(curusername);
+      localStorage.setItem("curusername", JSON.stringify(curusername));
       localStorage.setItem("curuser", JSON.stringify(useridpw));
     }
     else{
