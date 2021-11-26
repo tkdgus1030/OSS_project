@@ -4,13 +4,42 @@
 {% block body %}
 
 <h1>Group List</h1>
-    <table style="border:1px solid black;">
-    <tr onclick="location.href='{% url 'main:group_create' %}'">
-        <td style="border:1px solid blue; width:200px;height:20px;">      +      </td>
-    </tr>
-    <tr onclick="location.href='{% url 'main:history' %}'">
-        <td style="border:1px solid blue; width:200px;height:20px;">       팀플111       </td>
-    </tr>
-    </table>
+    <div>
+        <table id = "group_lists" style="border:1px solid black;">
+            <tr onclick="location.href='{% url 'main:group_create' %}'">
+                <td style="border:1px solid blue; width:200px;height:20px;">      +      </td>
+            </tr>
+            <!-- <tr onclick="location.href='{% url 'main:history' %}'">
+                <td style="border:1px solid blue; width:200px;height:20px;">       팀플111       </td>
+            </tr> -->
+        </table>
+    </div>
+    <br><br><br><br><br><br>
+<script>
+    let curuser = JSON.parse(localStorage.getItem("curuser"));
+    let userdata = JSON.parse(localStorage.getItem("userid_database"));
+    let useridx;
+    userdata.forEach((element,i) => {
+        if (element.idpw[0]===curuser[0]){
+            useridx=i;
+        }
+    });
+    let usergrouplist=userdata[useridx];
+    //usergrouplist.forEach(group =>{
+    [123,456,789].forEach(group =>{
+        let tr = document.createElement("tr");
+        tr.textContent = group;
+        //tr.style="border:1px solid blue; width:200px;height:20px;";
+        tr.setAttribute("onClick", "location.href='{% url 'main:history' %}'");
+        localStorage.setItem("showinghistory", JSON.stringify(group));
+        document.querySelector("#group_lists").appendChild(tr)
+    }
 
+    )
+    
+			
+
+			
+			
+</script>
 {% endblock %}
