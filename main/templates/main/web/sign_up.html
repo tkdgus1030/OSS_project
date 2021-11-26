@@ -56,7 +56,7 @@
   let username;
   let pwcheck;
 
-  console.log(useridpw_database)
+  //console.log(useridpw_database)
 
   btn = document.querySelector(".btn_design2");
   btn.addEventListener("click", () => {
@@ -101,7 +101,7 @@
       document.getElementById("usernameshow").style.display = "block";
       document.getElementById("usernameshow").disabled = false;
       useridpw_database.push(newuser);
-      console.log(useridpw_database)
+      //console.log(useridpw_database)
       localStorage.setItem("userid_database",JSON.stringify(useridpw_database));
       localStorage.setItem("curusername", JSON.stringify(username));
       localStorage.setItem("curuser", JSON.stringify(idpw));
