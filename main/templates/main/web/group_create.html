@@ -6,19 +6,15 @@
 <h1>Group Create</h1>
     <table id="groupmember" style="border:1px solid black;">
     <tr>
-        <td colspan="2" style="border:1px solid blue; width:200px;height:20px;"> <button id="addmember" style="border:1px solid blue; width:200px;">      +      </button></td>
+        <td style="border:1px solid blue; width:200px;height:20px;"> <button id="addmember" style="border:1px solid blue; width:200px;">      +      </button></td>
+        <td style="border:1px solid blue; width:200px;height:20px;"> <button id="delmember" style="border:1px solid blue; width:200px;">      -      </button></td>
     </tr>
     <tr>
-        <td id = 'asas' style="border:1px solid blue; width:200px;height:20px;"> <input type="text" class="phone" placeholder="Enter a phone.No">  </td>
-        <td style="border:1px solid blue; width:200px;height:20px;"> <input type="text" class="name"  placeholder="Enter a name">  </td>
-    </tr>
-    <tr>
-        <td style="border:1px solid blue; width:200px;height:20px;"> <input type="text" class="phone"placeholder="Enter a phone.No">  </td>
-        <td style="border:1px solid blue; width:200px;height:20px;"> <input type="text" class="name" placeholder="Enter a name">  </td>
+        <td colspan="2" style="border:1px solid blue; width:200px;height:20px;"> <input id="addgruopname" placeholder="Enter a groupname">  </td>
     </tr>
     <tr>
         <td style="border:1px solid blue; width:200px;height:20px;"> <input type="text" class="phone" placeholder="Enter a phone.No">  </td>
-        <td style="border:1px solid blue; width:200px;height:20px;"> <input type="text" class="name" placeholder="Enter a name">  </td>
+        <td style="border:1px solid blue; width:200px;height:20px;"> <input type="text" class="name"  placeholder="Enter a name">  </td>
     </tr>
     
     </table>
@@ -30,16 +26,34 @@
         <span id="normal_groupmaking"></span>
       </div>
 <script>
+    //localStorage.setItem("group_database", JSON.stringify(data));
     //tdstyle =  document.querySelector("#asas").style;
     //console.log(tdstyle[0]);
     //onclick="location.href='{% url 'main:group_list' %}'"
     addbtn = document.querySelector("#addmember");
+    delbtn = document.querySelector("#delmember");
     grouptable = document.querySelector("#groupmember");
     mkgroup = document.querySelector("#mkgroup");
+    addgruopname=document.querySelector("#addgruopname");
+    normal_groupmaking=document.querySelector("#normal_groupmaking");
+    let childnum=1;
     let useridpw_database=JSON.parse(localStorage.getItem("userid_database"));
+    let group_rawdata=localStorage.getItem("group_database")
+    let group_database
+        if (group_rawdata){
+            group_database=JSON.parse(group_rawdata);
+        }
+        else{
+            //let temp={}
+            //temp.name='1';
+            //temp.member=[['1','2'],['3','4'],['5','6']]
+            group_database={};
+            //group_database[1]=temp;
+        }  
     addbtn.addEventListener("click", () => {
         
         let tr = document.createElement("tr");
+        tr.id = 'memberNo'+ childnum++;
         let td1 = document.createElement("td");
         td1.style="border:1px solid blue; width:200px;height:20px;" // style 적용
         let td2 = document.createElement("td");
@@ -58,6 +72,11 @@
         tr.appendChild(td2);
         grouptable.appendChild(tr);
     })
+    delbtn.addEventListener("click", () => {
+        if (childnum>1){
+        rmtr=document.querySelector('#memberNo'+ --childnum);
+        rmtr.remove();}
+    })
     mkgroup.addEventListener("click", () => {
         memberlist=[];
         document.querySelectorAll(".phone").forEach(input => {
@@ -68,12 +87,29 @@
         });
         let isallmemberOK = memberlist.every(groupmember=>{
             return useridpw_database.some( (user) =>{
-                //console.log(user.idpw[0],groupmember[0] , user.name ,groupmember[1])
                 return user.idpw[0]===groupmember[0] && user.name === groupmember[1];
             })
         });
-        if(isallmemberOK){
-
+        /*console.log(group_database);
+        let group_duplication=false;
+        for (group in group_database){
+            if (group.name===addgruopname.value && JSON.stringify(group.member) === JSON.stringify(memberlist)) group_duplication=true;
+        }*/
+        let group_idlist = Object.keys(group_database);
+        let group_duplication = group_idlist.some((id)=> {
+            return group_database[id].name===addgruopname.value && JSON.stringify(group_database[id].member) === JSON.stringify(memberlist);
+        })
+        if (group_duplication){
+            normal_groupmaking.textContent="중복된 그룹입니다.";
+        }
+        else if(isallmemberOK){
+            location.href='{% url 'main:group_list' %}';
+            groupid = Object.keys(group_database).length+1;
+            groupcomponent={};
+            groupcomponent.name=addgruopname.value;
+            groupcomponent.member=memberlist;
+            group_database[groupid]=groupcomponent;
+            localStorage.setItem("group_database", JSON.stringify(group_database));
         }
         else {
             normal_groupmaking=document.querySelector("#normal_groupmaking");
