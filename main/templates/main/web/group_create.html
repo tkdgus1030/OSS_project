@@ -4,22 +4,81 @@
 {% block body %}
 
 <h1>Group Create</h1>
-    <table style="border:1px solid black;">
-
+    <table id="groupmember" style="border:1px solid black;">
     <tr>
-        <td style="border:1px solid blue; width:200px;height:20px;">       김세란       </td>
+        <td colspan="2" style="border:1px solid blue; width:200px;height:20px;"> <button id="addmember" style="border:1px solid blue; width:200px;">      +      </button></td>
     </tr>
     <tr>
-        <td style="border:1px solid blue; width:200px;height:20px;">       김예린       </td>
+        <td id = 'asas' style="border:1px solid blue; width:200px;height:20px;"> <input type="text" class="phone" placeholder="Enter a phone.No">  </td>
+        <td style="border:1px solid blue; width:200px;height:20px;"> <input type="text" class="name"  placeholder="Enter a name">  </td>
     </tr>
     <tr>
-        <td style="border:1px solid blue; width:200px;height:20px;">       박상현       </td>
+        <td style="border:1px solid blue; width:200px;height:20px;"> <input type="text" class="phone"placeholder="Enter a phone.No">  </td>
+        <td style="border:1px solid blue; width:200px;height:20px;"> <input type="text" class="name" placeholder="Enter a name">  </td>
     </tr>
     <tr>
-        <td style="border:1px solid blue; width:200px;height:20px;">      +      </td>
+        <td style="border:1px solid blue; width:200px;height:20px;"> <input type="text" class="phone" placeholder="Enter a phone.No">  </td>
+        <td style="border:1px solid blue; width:200px;height:20px;"> <input type="text" class="name" placeholder="Enter a name">  </td>
     </tr>
+    
     </table>
+    
     <br>
-    <button onclick="location.href='{% url 'main:group_list' %}'">그룹생성하기</button>
+    <button id="mkgroup" >그룹생성하기</button>
+    <br><br>
+    <div style="text-align: center;">
+        <span id="normal_groupmaking"></span>
+      </div>
+<script>
+    //tdstyle =  document.querySelector("#asas").style;
+    //console.log(tdstyle[0]);
+    //onclick="location.href='{% url 'main:group_list' %}'"
+    addbtn = document.querySelector("#addmember");
+    grouptable = document.querySelector("#groupmember");
+    mkgroup = document.querySelector("#mkgroup");
+    let useridpw_database=JSON.parse(localStorage.getItem("userid_database"));
+    addbtn.addEventListener("click", () => {
+        
+        let tr = document.createElement("tr");
+        let td1 = document.createElement("td");
+        td1.style="border:1px solid blue; width:200px;height:20px;" // style 적용
+        let td2 = document.createElement("td");
+        td2.style="border:1px solid blue; width:200px;height:20px;"
+        let input1 = document.createElement("input");
+        input1.type='text';
+        input1.className='phone';
+        input1.placeholder="Enter a phone.No";
+        let input2 = document.createElement("input");
+        input2.type='text';
+        input2.className='name';
+        input2.placeholder="Enter a name";
+        td1.appendChild(input1);
+        td2.appendChild(input2);
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        grouptable.appendChild(tr);
+    })
+    mkgroup.addEventListener("click", () => {
+        memberlist=[];
+        document.querySelectorAll(".phone").forEach(input => {
+            memberlist.push([input.value]);
+        });
+        document.querySelectorAll(".name").forEach((input ,i) => {
+            memberlist[i].push(input.value);
+        });
+        let isallmemberOK = memberlist.every(groupmember=>{
+            return useridpw_database.some( (user) =>{
+                //console.log(user.idpw[0],groupmember[0] , user.name ,groupmember[1])
+                return user.idpw[0]===groupmember[0] && user.name === groupmember[1];
+            })
+        });
+        if(isallmemberOK){
 
+        }
+        else {
+            normal_groupmaking=document.querySelector("#normal_groupmaking");
+            normal_groupmaking.textContent="올바른 사용자를 입력하십시오.";
+        }
+    });
+</script>
 {% endblock %}
