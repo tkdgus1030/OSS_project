@@ -36,6 +36,9 @@
     mkgroup = document.querySelector("#mkgroup");
     addgruopname=document.querySelector("#addgruopname");
     normal_groupmaking=document.querySelector("#normal_groupmaking");
+    let curusername_groupcreate=JSON.parse(localStorage.getItem("curusername"));
+    //console.log(curusername);
+    let curuseridpw = JSON.parse(localStorage.getItem("curuser"));
     let childnum=1;
     let useridpw_database=JSON.parse(localStorage.getItem("userid_database"));
     let group_rawdata=localStorage.getItem("group_database")
@@ -102,17 +105,22 @@
         if (group_duplication){
             normal_groupmaking.textContent="중복된 그룹입니다.";
         }
+        
         else if(isallmemberOK){
-            location.href='{% url 'main:group_list' %}';
-            groupid = Object.keys(group_database).length+1;
-            groupcomponent={};
-            groupcomponent.name=addgruopname.value;
-            groupcomponent.member=memberlist;
-            group_database[groupid]=groupcomponent;
-            localStorage.setItem("group_database", JSON.stringify(group_database));
+            if(!memberlist.some(member => { return member[0]===curuseridpw[0] && member[1]===curusername_groupcreate; })) {
+                normal_groupmaking.textContent="그룹에 자기자신이 포함되어야 합니다.";
+            }
+            else{
+                location.href='{% url 'main:group_list' %}';
+                groupid = Object.keys(group_database).length+1;
+                groupcomponent={};
+                groupcomponent.name=addgruopname.value;
+                groupcomponent.member=memberlist;
+                group_database[groupid]=groupcomponent;
+                localStorage.setItem("group_database", JSON.stringify(group_database));
+            }
         }
         else {
-            normal_groupmaking=document.querySelector("#normal_groupmaking");
             normal_groupmaking.textContent="올바른 사용자를 입력하십시오.";
         }
     });
