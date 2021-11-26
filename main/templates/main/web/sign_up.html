@@ -6,9 +6,9 @@
     
 <div class="container-sm" style="width:30%;height:80%;text-align: center; margin-top: 160px">
   <div class="mb-3 row">
-    <label for="inputPhonenumber" class="col-sm-3 col-form-label">휴대폰 번호</label>
+    <label for="inputPhonenumber_reg" class="col-sm-3 col-form-label">휴대폰 번호</label>
     <div class="col-sm-9">
-      <input class="input_design" id="inputPhonenumber">
+      <input class="input_design" id="inputPhonenumber_reg">
     </div>
   </div>
   <div class="mb-3 row">  
@@ -18,9 +18,9 @@
     </div>
   </div>
   <div class="mb-3 row">
-    <label for="inputPassword" class="col-sm-3 col-form-label">비밀번호</label>
+    <label for="inputPassword_reg" class="col-sm-3 col-form-label">비밀번호</label>
     <div class="col-sm-9">
-      <input type="password" class="input_design" id="inputPassword">
+      <input type="password" class="input_design" id="inputPassword_reg">
     </div>
   </div>
    <div class="mb-3 row">  
@@ -31,11 +31,86 @@
   </div>
     <br>
     <div class="d-grid gap-2">
-        <button type="button" class="btn_design2" onClick="location.href='{% url 'main:group_list' %}'" >회원가입 및 로그인</button>
+        <button type="button" class="btn_design2"  >회원가입 및 로그인</button>
+    </div>
+    <br><br>
+    <div style="text-align: center;">
+      <span id="registercheck"></span>
     </div>
     <br>
     <br><br><br><br><br><br>
 </div>
+<script>
 
+
+  let user_database=localStorage.getItem("userid_database");
+  let useridpw_database;
+  if(user_database) {
+    useridpw_database= JSON.parse(user_database);
+  }
+  else {
+    useridpw_database = [];
+  }
+  
+  let idpw=["",""];
+  let username;
+  let pwcheck;
+
+  console.log(useridpw_database)
+
+  btn = document.querySelector(".btn_design2");
+  btn.addEventListener("click", () => {
+    idpw[0]=document.querySelector("#inputPhonenumber_reg").value;
+    idpw[1]=document.querySelector("#inputPassword_reg").value;
+    username=document.querySelector("#inputName").value;
+    pwcheck=document.querySelector("#inputPasswordCheck").value;
+    document.querySelector("#registercheck").textContent="";
+    if (idpw[0]===""){
+      document.querySelector("#registercheck").textContent="휴대폰 번호를 입력하십시오.";
+      btn.setAttribute("onClick", "");
+    }
+    else if (idpw[0].length!==11){
+      document.querySelector("#registercheck").textContent="올바른 휴대폰 번호를 입력하십시오.";
+      btn.setAttribute("onClick", "");
+    }
+    else if (idpw[1]==="" || pwcheck===""){
+      document.querySelector("#registercheck").textContent="비밀번호를 입력하십시오.";
+      btn.setAttribute("onClick", "");
+    }
+    else if (username===""){
+      document.querySelector("#registercheck").textContent="이름을 입력하십시오.";
+      btn.setAttribute("onClick", "");
+    }
+    else if( useridpw_database.some(userdata => userdata.idpw[0]===idpw[0] )){
+      document.querySelector("#registercheck").textContent="이미 존재하는 휴대폰 번호입니다.";
+      
+      btn.setAttribute("onClick", "");
+    }
+    else if (idpw[1]!==pwcheck){
+      document.querySelector("#registercheck").textContent="비밀번호가 일치하지 않습니다.";
+      btn.setAttribute("onClick", "");
+    }
+    else {
+      let newuser={};
+      newuser.idpw=idpw;
+      newuser.name=username;
+      newuser.group=[];
+
+      document.querySelector("#usernameshow").textContent=username;
+      btn.setAttribute("onClick", "location.href='{% url 'main:group_list' %}'");
+      document.getElementById("usernameshow").style.display = "block";
+      document.getElementById("usernameshow").disabled = false;
+      useridpw_database.push(newuser);
+      console.log(useridpw_database)
+      localStorage.setItem("userid_database",JSON.stringify(useridpw_database));
+      localStorage.setItem("curusername", JSON.stringify(username));
+      localStorage.setItem("curuser", JSON.stringify(idpw));
+      location.href='{% url 'main:group_list' %}';
+    }
+
+  });
+  
+  
+</script>
 
 {% endblock %}
