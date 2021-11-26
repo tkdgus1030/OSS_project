@@ -38,6 +38,9 @@
 </div>
 
 <script>
+    /*let data = localStorage.getItem("datas");
+        if (!data) data=[2];
+        else data = JSON.parse(data);
     function download(filename, text) {
 			var pom = document.createElement('a');
 			pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
@@ -55,12 +58,13 @@
     
     document.querySelectorAll(".download").forEach(pixel => {
         pixel.addEventListener("click", () => {
-            
-            console.log('aa');
-            download('test.txt', 'Hello world!');
+            data.push("1");
+            console.log(data)
+            localStorage.setItem("datas", JSON.stringify(data));
+            //download('test.txt', 'Hello world!');
         });
     });
-    
+    */
 </script>
 </body>
 {% block script %}
