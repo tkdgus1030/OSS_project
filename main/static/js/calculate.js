@@ -226,12 +226,14 @@ function setTable() {
     })
 }
 function result(){
+    $('.res_div1').html('<br><p>송금 내역</p>');
     $('.res_table').html(' <tr>\n' +
         '                <th>이름</th>\n' +
         '                <th>결제한 금액</th>\n' +
         '                <th>사용 금액</th>\n' +
         '                <th>총</th>\n' +
-        '            </tr>');
+        '            </tr><br>');
+    $('.res_div2').html('<br>')
 
     for(let p1 = 0 ; p1 < people.length; p1++){
         let tr = document.createElement('tr');

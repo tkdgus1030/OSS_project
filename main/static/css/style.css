@@ -97,4 +97,7 @@
 .checkbox_design input[type="checkbox"] {
     cursor: pointer;
     background-color: #60C49D;
+    color: white;
 }
+
+    
