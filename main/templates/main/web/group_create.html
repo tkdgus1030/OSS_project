@@ -12,7 +12,7 @@
     <tr>
         <td colspan="2" style="border:1px solid blue; width:200px;height:20px;"> <input id="addgruopname" placeholder="Enter a groupname">  </td>
     </tr>
-    <tr>
+    <tr id = "basetr_group_create">
         <td style="border:1px solid blue; width:200px;height:20px;"> <input type="text" class="phone" placeholder="Enter a phone.No">  </td>
         <td style="border:1px solid blue; width:200px;height:20px;"> <input type="text" class="name"  placeholder="Enter a name">  </td>
     </tr>
@@ -22,9 +22,6 @@
     <br>
     <button id="mkgroup" >그룹생성하기</button>
     <br><br>
-    <div style="text-align: center;">
-        <span id="normal_groupmaking"></span>
-      </div>
 <script>
     //localStorage.setItem("group_database", JSON.stringify(data));
     //tdstyle =  document.querySelector("#asas").style;
@@ -35,7 +32,7 @@
     grouptable = document.querySelector("#groupmember");
     mkgroup = document.querySelector("#mkgroup");
     addgruopname=document.querySelector("#addgruopname");
-    normal_groupmaking=document.querySelector("#normal_groupmaking");
+    basetr_group_create=document.querySelector("#basetr_group_create");
     let curusername_groupcreate=JSON.parse(localStorage.getItem("curusername"));
     //console.log(curusername);
     let curuseridpw = JSON.parse(localStorage.getItem("curuser"));
@@ -54,9 +51,13 @@
             //group_database[1]=temp;
         }  
     addbtn.addEventListener("click", () => {
-        
-        let tr = document.createElement("tr");
+        //console.log(typeof(basetr_group_create.childNodes[1].childNodes[1].className));
+        //console.log(basetr_group_create.childNodes[1].childNodes[1].value);
+        let tr = basetr_group_create.cloneNode(true);
+        tr.childNodes[1].childNodes[1].value=""
+        tr.childNodes[3].childNodes[1].value=""
         tr.id = 'memberNo'+ childnum++;
+        /*let tr = document.createElement("tr");
         let td1 = document.createElement("td");
         td1.style="border:1px solid blue; width:200px;height:20px;" // style 적용
         let td2 = document.createElement("td");
@@ -72,7 +73,7 @@
         td1.appendChild(input1);
         td2.appendChild(input2);
         tr.appendChild(td1);
-        tr.appendChild(td2);
+        tr.appendChild(td2);*/
         grouptable.appendChild(tr);
     })
     delbtn.addEventListener("click", () => {
@@ -103,12 +104,12 @@
             return group_database[id].name===addgruopname.value && JSON.stringify(group_database[id].member) === JSON.stringify(memberlist);
         })
         if (group_duplication){
-            normal_groupmaking.textContent="중복된 그룹입니다.";
+            alert('중복된 그룹입니다.');
         }
         
         else if(isallmemberOK){
             if(!memberlist.some(member => { return member[0]===curuseridpw[0] && member[1]===curusername_groupcreate; })) {
-                normal_groupmaking.textContent="그룹에 자기자신이 포함되어야 합니다.";
+                alert('그룹에 자기자신이 포함되어야 합니다.');
             }
             else{
                 location.href='{% url 'main:group_list' %}';
@@ -121,7 +122,7 @@
             }
         }
         else {
-            normal_groupmaking.textContent="올바른 사용자를 입력하십시오.";
+            alert('올바른 사용자를 입력하십시오.');
         }
     });
 </script>
