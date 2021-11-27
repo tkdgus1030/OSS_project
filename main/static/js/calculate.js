@@ -238,6 +238,7 @@ function result(){
     $('.res_div4').html('<br>')
     
     let remittance = [];
+    let total = 0;
 
     for(let p1 = 0 ; p1 < people.length; p1++){
         let tr = document.createElement('tr');
@@ -253,6 +254,7 @@ function result(){
                 res1 += ele.amount;
             })
         })
+        total += res1;
         
         td2_div.append(res1);
         td2.append(td2_div);
@@ -281,6 +283,12 @@ function result(){
         $('.res_table').append(tr);
     }
     
+    let total_div = document.createElement('div');
+    total_div.className = "total_string";
+    let tstring = `총 금액은 ${total}원! `;
+    total_div.append(tstring);
+    $('.res_div2').append(total_div);
+    
     remittance.sort((a, b) => a[1] - b[1]);
 
     for(let i = 0 ; i < people.length; i++){
@@ -292,13 +300,13 @@ function result(){
                 continue;
             }
             let rem = remittance[j][1] + remittance[i][1];
-            console.log(i, j, rem);
+     
             if (rem >= 0){
                 let rem_div = document.createElement('div');
                 rem_div.className = "remittance result_string";
                 let string = `${people[remittance[i][0]]}은(는) ${people[remittance[j][0]]}에게 ${-remittance[i][1]}원 송금!`;
                 rem_div.append(string);
-                $('.res_div2').append(rem_div);
+                $('.res_div3').append(rem_div);
                 //console.log(`${people[remittance[i][0]]}은(는) ${people[remittance[j][0]]}에게 ${-remittance[i][1]}원 송금!`);
                 remittance[i][1] = 0;
                 remittance[j][1] = rem;
@@ -308,7 +316,7 @@ function result(){
                 rem_div.className = "remittance result_string";
                 let string = `${people[remittance[i][0]]}은(는) ${people[remittance[j][0]]}에게 ${remittance[j][1]}원 송금!`;
                 rem_div.append(string);
-                $('.res_div2').append(rem_div);
+                $('.res_div3').append(rem_div);
                 //console.log(`${people[remittance[i][0]]}은(는) ${people[remittance[j][0]]}에게 ${remittance[j][1]}원 송금!`);
                 remittance[i][1] = rem;
                 remittance[j][1] = 0;
