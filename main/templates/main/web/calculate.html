@@ -1,59 +1,52 @@
 {% extends 'main/web/base.html' %}
+{% load static %}
+{% block script %}
+    <script src="{% static 'js/calculate.js' %}"></script>
 
+    <script>
+     window.addEventListener("load", () => {
+        setTable();
+    });
+    </script>
+{% endblock %}
 
 {% block body %}
-<h1>Calculate - 팀플</h1>
-    <div class="mb-3 row">
-        <label class="col-sm-3 col-form-label" style="text-align: center">정산 이름: </label>
-        <div class="col-sm-9">
-        <input class="input_design" id="inputhistoryname">
-        </div>
+
+    <div style="margin-top: 100px">
+        <h3>계산 내역</h3>
     </div>
-    <table>
-    <tr>
-        <th>결제한사람</th>
-        <th>결제 대상</th>
-        <th>결제 금액</th>
+    <div class="container-sm" style="width:35%;height:10%;text-align: center; margin-top: 30px">
+        <input
+            type="text"
+            class="name_input_design"
+            id="inputhistoryname"
+            placeholder="정산 이름을 입력하세요."
+            autofocus
+            style="text-align: center;"
+        />
+    </div>    
 
-        <th>김예린</th>
-        <th>김세란</th>
-        <th>박상현</th>
-    </tr>
-
-    <tr>
-        <td>김예린 <button>+</button></td>
-        <td>고기</td>
-        <td>51000</td>
-
-        <td>O</td>
-        <td>O</td>
-        <td>O</td>
-    </tr>
-    <tr>
-        <td>김세란 <button>+</button></td>
-        <td>스터디룸</td>
-        <td>30000</td>
-
-        <td>O</td>
-        <td>O</td>
-        <td>O</td>
-    </tr>
-    <tr>
-        <td>박상현 <button>+</button></td>
-        <td>카페음료</td>
-        <td>16000</td>
-
-        <td>X</td>
-        <td>O</td>
-        <td>O</td>
-    </tr>
-    </table>
     <div>
-        <button class="btn_design1" style="width: 30%">결과보기</button>
+        <table class="cal_table" style="margin:30px auto;">
+            <tr>
+                <th>결제한사람</th>
+                <th>결제 대상</th>
+                <th>결제 금액</th>
+    
+                <th><div id="people_list" class="row-vh d-flex flex-row justify-content-between" style="flex-grow:1"></div></th>
+                <th></th>
+            </tr>
+    
+        </table>
     </div>
     <div>
-        <button id="addnewhistory" class="btn_design1" style="width: 30%">그룹에 추가하기</button>
+        <a class="btn btn_design1" style="width:30%; margin-bottom: 40px; margin-top: 20px" href="#result" onclick="result()">결과보기</a>
+    </div>    
+
+    <div>
+        <button id="addnewhistory" class="btn btn_design2" style="width: 30%">그룹에 추가하기</button>
     </div>
+        
 <script>
     //console.log(JSON.parse(localStorage.getItem("people")));
     let historydatabase_add=JSON.parse(localStorage.getItem("historydatabase"));
