@@ -126,3 +126,9 @@
     height: 40px;
     border-radius: 5px;
 }
+
+.result_string {
+    font-size: 12px;
+    font-weight: bold;
+    color: #4CB1DE;
+}

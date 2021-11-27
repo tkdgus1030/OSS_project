@@ -234,6 +234,10 @@ function result(){
         '                <th>총</th>\n' +
         '            </tr><br>');
     $('.res_div2').html('<br>')
+    $('.res_div3').html('<br>')
+    $('.res_div4').html('<br>')
+    
+    let remittance = [];
 
     for(let p1 = 0 ; p1 < people.length; p1++){
         let tr = document.createElement('tr');
@@ -249,6 +253,7 @@ function result(){
                 res1 += ele.amount;
             })
         })
+        
         td2_div.append(res1);
         td2.append(td2_div);
         let td3 = document.createElement('td');
@@ -259,11 +264,14 @@ function result(){
                 res2 += ele.amount;
             })
         }
+        
         td3_div.append(res2);
         td3.append(td3_div);
         let td4 = document.createElement('td');
         let td4_div = document.createElement('div');
         let res3 = res1 - res2;
+        remittance[p1] = [p1, res3];
+        
         td4_div.append(res3);
         td4.append(td4_div);
         tr.append(name_td);
@@ -271,6 +279,42 @@ function result(){
         tr.append(td3);
         tr.append(td4);
         $('.res_table').append(tr);
+    }
+    
+    remittance.sort((a, b) => a[1] - b[1]);
+
+    for(let i = 0 ; i < people.length; i++){
+        if (remittance[i][1] >= 0) {
+            break;
+        }
+        for (let j = people.length - 1; j > -1; j--){
+            if (remittance[j][1] === 0 || i === j) {
+                continue;
+            }
+            let rem = remittance[j][1] + remittance[i][1];
+            console.log(i, j, rem);
+            if (rem >= 0){
+                let rem_div = document.createElement('div');
+                rem_div.className = "remittance result_string";
+                let string = `${people[remittance[i][0]]}은(는) ${people[remittance[j][0]]}에게 ${-remittance[i][1]}원 송금!`;
+                rem_div.append(string);
+                $('.res_div2').append(rem_div);
+                //console.log(`${people[remittance[i][0]]}은(는) ${people[remittance[j][0]]}에게 ${-remittance[i][1]}원 송금!`);
+                remittance[i][1] = 0;
+                remittance[j][1] = rem;
+                break;
+            } else {
+                let rem_div = document.createElement('div');
+                rem_div.className = "remittance result_string";
+                let string = `${people[remittance[i][0]]}은(는) ${people[remittance[j][0]]}에게 ${remittance[j][1]}원 송금!`;
+                rem_div.append(string);
+                $('.res_div2').append(rem_div);
+                //console.log(`${people[remittance[i][0]]}은(는) ${people[remittance[j][0]]}에게 ${remittance[j][1]}원 송금!`);
+                remittance[i][1] = rem;
+                remittance[j][1] = 0;
+            }
+        }
+   
     }
 }
 window.addEventListener("load", () => {
@@ -280,7 +324,7 @@ window.addEventListener("load", () => {
     for(let i=0;i<people.length;i++){
         for(let j=0; j< people < length; j++)
         {
-            res_table[i][j]=[];
+            let re = document.createElement('div');
         }
     }
     saveRes();
