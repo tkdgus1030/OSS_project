@@ -5,7 +5,7 @@
 <h1>History List - 팀플</h1>
 
     <table id="userhistorylist" style="border:1px solid black;">
-    <tr id='abc' onclick="location.href='{% url 'main:calculate' %}'">
+    <tr id='createnewhistory' onclick="location.href='{% url 'main:calculate' %}'">
         <td style="border:1px solid blue; width:200px;height:20px;">      +      </td>
     </tr>
     <!-- <tr onclick="location.href='{% url 'main:history_detail' %}'">
@@ -13,17 +13,35 @@
     </tr> -->
     </table>
 <script>
-    let groupname=JSON.parse(localStorage.getItem("curgroup"));
+    let groupid=JSON.parse(localStorage.getItem("curgroup"));
     let historydatabase=JSON.parse(localStorage.getItem("historydatabase"));
     let userhistorylist=document.querySelector("#userhistorylist");
-    let abc=document.querySelector("#abc");
-    console.log(historydatabase)
-    abc.cloneNode();
-    historydatabase[groupname].forEach(histroy => {
-        let tr = abc.cloneNode(true);
-        tr.setAttribute("onClick", "location.href='{% url 'main:history_detail' %}'");
-        tr.childNodes[1].textContent=histroy.name
-        userhistorylist.appendChild(tr)
+    let createnewhistory=document.querySelector("#createnewhistory");
+    let groupdatabase = JSON.parse(localStorage.getItem("group_database"));
+    //console.log(historydatabase)
+    
+    historydatabase[groupid].forEach(histroy => {
+        let tr = createnewhistory.cloneNode(true);
+        tr.setAttribute("onClick", "");
+        tr.id=groupid+"history"+histroy.id;
+        tr.className="historydetail";
+        tr.childNodes[1].textContent=histroy.name;
+        userhistorylist.appendChild(tr);       
+    });
+    document.querySelectorAll(".historydetail").forEach(history => {
+		history.addEventListener("click", () => {
+            //console.log(gotolist.id)
+            localStorage.setItem("historyid",JSON.stringify(history.id));
+            //console.log(history.id)
+            location.href='{% url 'main:history_detail' %}'
+            
+        });
+    });
+    //console.log(userhistorylist)
+    createnewhistory.addEventListener("click",()=>{
+        let people=groupdatabase[groupid.split("group")[1]].member;
+        localStorage.setItem("people",JSON.stringify(people));
+        //console.log(people)
     });
 </script>
 {% endblock %}
