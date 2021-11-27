@@ -100,4 +100,19 @@
     color: white;
 }
 
-    
+.table_margin {
+    border-collapse: separate;
+    border-spacing: 0 20px;
+}
+
+.btn_design3 {
+    background-color: #4CB1DE;
+    border: none;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    height: 45px;
+    border-radius: 20px;
+
+}
