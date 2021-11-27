@@ -100,4 +100,29 @@
     color: white;
 }
 
-    
+.table_margin {
+    border-collapse: separate;
+    border-spacing: 0 20px;
+}
+
+.btn_design3 {
+    background-color: #4CB1DE;
+    border: none;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    height: 45px;
+    border-radius: 20px;
+
+}
+
+.group_input_design {
+    background-color:lightgray;
+    border: none;
+    padding-left: 8px;
+    padding-right: 8px;
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+}

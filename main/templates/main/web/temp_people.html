@@ -7,7 +7,7 @@
 {% endblock %}
 {% block body %}
     <div style="margin-top: 100px;margin-bottom: 40px">
-        <h3>그룹 목록</h3>
+        <h3>멤버 추가</h3>
     </div>
     <div class="container-sm" style="width:35%;height:80%;text-align: center;border: 5px blue">
         <div class="container">
@@ -20,7 +20,7 @@
                     autofocus
                 />  
                 <button type="button" id="add" class="btn add_btn_design">
-                    <i class="bi bi-plus"></i> + 
+                    + 
                 </button>
             </div>
         </div>
@@ -30,7 +30,7 @@
             </div>
         </div>
         <div>
-            <button id="next" class="btn_design2" style="margin-top: 30px;width: 60%" url="{% url 'main:temp_calculate' %}" onclick="next(this)">다음</button>
+            <button id="next" class="btn btn_design2" style="margin-top: 30px;width: 60%" url="{% url 'main:temp_calculate' %}" onclick="next(this)">다음</button>
         </div>
     </div>
     
