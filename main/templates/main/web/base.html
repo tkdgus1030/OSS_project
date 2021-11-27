@@ -26,6 +26,7 @@
       <div class="container">
           <span style="cursor:pointer;" class="navbar-brand mb-0 h1 pe-auto border">Pay G</span>
           <button  id="usernameshow" class="download btn btn-sm btn-primary" ></button>
+          <button  id="clearlocalstorage" class="download btn btn-sm btn-danger" >ClearLocalstorage</button>
       </div>
     </nav>
 </div>
@@ -38,11 +39,14 @@
 </div>
 
 <script>
-    document.getElementById("usernameshow").style.display = "none";
-    document.getElementById("usernameshow").disabled = true;
+    let iddispbutton=document.querySelector("#usernameshow");
+    //iddispbutton.style.display = "none";
+    //iddispbutton.disabled = true;
     let curusername = localStorage.getItem("curusername");
-    document.getElementById("usernameshow").textContent=curusername;
-    document.querySelector("#usernameshow").setAttribute("onClick", "location.href='{% url 'main:group_list' %}'");
+    iddispbutton.textContent=curusername;
+    iddispbutton.setAttribute("onClick", "location.href='{% url 'main:group_list' %}'");
+    let clearlocalstorage = document.querySelector("#clearlocalstorage");
+    clearlocalstorage.addEventListener("click", () => {localStorage.clear();console.log('clear')})
     /*let data = localStorage.getItem("datas");
         if (!data) data=[2];
         else data = JSON.parse(data);
