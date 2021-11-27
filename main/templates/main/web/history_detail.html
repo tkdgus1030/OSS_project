@@ -2,6 +2,51 @@
 
 
 {% block body %}
-<h1>History List - Group 1 - History Detail 0 </h1>
+<h1 id="historytitle">History List - Group 1 - History Detail 0 </h1>
+<div>
+    <span  style="font-size: 120%;"></span>
+</div>
+<button  id="download" class="download btn btn-sm btn-primary" >히스토리 다운로드</button>
+<script>
+    function download(filename, text) {
+			var pom = document.createElement('a');
+			pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+			pom.setAttribute('download', filename);
+		
+			if (document.createEvent) {
+				var event = document.createEvent('MouseEvents');
+				event.initEvent('click', true, true);
+				pom.dispatchEvent(event);
+			}
+			else {
+				pom.click();
+			}
+	}
 
+    let historyid=JSON.parse(localStorage.getItem("historyid"));
+    let groupid=JSON.parse(localStorage.getItem("curgroup"));
+    let historydatabase=JSON.parse(localStorage.getItem("historydatabase"));
+    let historycomponent
+    let curhistoryname
+    //console.log(historyid)
+    historydatabase[groupid].forEach(history => {
+        //console.log(history.id+"" ,historyid.split("history")[1])
+        if(""+history.id ===historyid.split("history")[1] ){
+            historycomponent=history.component;
+            curhistoryname=history.name
+            //console.log(history);
+        }
+    });
+    let historytitle = document.getElementById("historytitle");
+    //console.log(historytitle);
+    historytitle.innerHTML= "History List - " + groupid+ ' - ' + curhistoryname+': Detail' ;
+    
+    document.getElementById("download").addEventListener("click", () => {
+            //console.log(1231441)
+            download("History List - " + groupid+ ' - ' + curhistoryname+': Detail', historycomponent);
+    });
+
+    
+    
+</script>
 {% endblock %}

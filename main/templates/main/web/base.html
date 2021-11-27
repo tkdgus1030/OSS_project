@@ -21,14 +21,16 @@
 
 </head>
 <body style="width:100%;height:100%;">
-    <div onclick="location.href='{% url 'main:index' %}'">
+    <div >
     <nav class="navbar navbar-light bg-light">
       <div class="container">
-          <span style="cursor:pointer;" class="navbar-brand mb-0 h1 pe-auto border">Pay G</span>
-          <button  id="usernameshow" class="download btn btn-sm btn-primary" ></button>
-          <button  id="clearlocalstorage" class="download btn btn-sm btn-danger" >ClearLocalstorage</button>
+          <span style="cursor:pointer;" class="navbar-brand mb-0 h1 pe-auto border" onclick="location.href='{% url 'main:index' %}'">Pay G</span>
+          <button  id="usernameshow" class="btn btn-sm btn-primary" ></button>
+          
       </div>
+      
     </nav>
+    <button   id="clearlocalstorage" class="btn btn-sm btn-danger"  style="float: right;">ClearLocalstorage</button>
 </div>
 
 <div id="content" style="width:100%;height:100%;border:1px solid blue;text-align: center" class="d-flex justify-content-around border">
@@ -40,39 +42,23 @@
 
 <script>
     let iddispbutton=document.querySelector("#usernameshow");
-    //iddispbutton.style.display = "none";
-    //iddispbutton.disabled = true;
+    //
     let curusername = localStorage.getItem("curusername");
-    iddispbutton.textContent=curusername;
-    iddispbutton.setAttribute("onClick", "location.href='{% url 'main:group_list' %}'");
+    if(curusername){
+        iddispbutton.textContent=JSON.parse(curusername);
+        iddispbutton.setAttribute("onClick", "location.href='{% url 'main:group_list' %}'");
+    }    
+    else{
+        iddispbutton.setAttribute("onClick", "location.href=''");
+        iddispbutton.style.display = "none";
+        iddispbutton.disabled = true;
+    }
     let clearlocalstorage = document.querySelector("#clearlocalstorage");
     clearlocalstorage.addEventListener("click", () => {localStorage.clear();console.log('clear')})
     /*let data = localStorage.getItem("datas");
         if (!data) data=[2];
         else data = JSON.parse(data);
-    function download(filename, text) {
-			var pom = document.createElement('a');
-			pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-			pom.setAttribute('download', filename);
-		
-			if (document.createEvent) {
-				var event = document.createEvent('MouseEvents');
-				event.initEvent('click', true, true);
-				pom.dispatchEvent(event);
-			}
-			else {
-				pom.click();
-			}
-	}
     
-    document.querySelectorAll(".download").forEach(pixel => {
-        pixel.addEventListener("click", () => {
-            data.push("1");
-            console.log(data)
-            localStorage.setItem("datas", JSON.stringify(data));
-            //download('test.txt', 'Hello world!');
-        });
-    });
     */
 </script>
 </body>
