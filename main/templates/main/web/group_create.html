@@ -3,25 +3,40 @@
 
 {% block body %}
 
-<h1>Group Create</h1>
-    <table id="groupmember" style="border:1px solid black;">
-    <tr>
-        <td style="border:1px solid blue; width:200px;height:20px;"> <button id="addmember" style="border:1px solid blue; width:200px;">      +      </button></td>
-        <td style="border:1px solid blue; width:200px;height:20px;"> <button id="delmember" style="border:1px solid blue; width:200px;">      -      </button></td>
-    </tr>
-    <tr>
-        <td colspan="2" style="border:1px solid blue; width:200px;height:20px;"> <input id="addgruopname" placeholder="Enter a groupname">  </td>
-    </tr>
-    <tr id = "basetr_group_create">
-        <td style="border:1px solid blue; width:200px;height:20px;"> <input type="text" class="phone" placeholder="Enter a phone.No">  </td>
-        <td style="border:1px solid blue; width:200px;height:20px;"> <input type="text" class="name"  placeholder="Enter a name">  </td>
-    </tr>
-    
-    </table>
-    
-    <br>
-    <button id="mkgroup" >그룹생성하기</button>
-    <br><br>
+    <div style="margin-top: 100px;margin-bottom: 40px">
+            <h3>그룹 생성</h3>
+    </div>
+    <div class="container-sm" style="width:35%;height:80%;text-align: center;">
+
+        <table id="groupmember">
+            <tr style="width: 100%">
+                <div class="d-flex align-items-center mb-3 mt-2">
+                    <input
+                        type="text"
+                        class="name_input_design"
+                        id="addgruopname"
+                        placeholder="그룹명을 입력하세요."
+                        autofocus
+                    />  
+                    <button type="button" id="addmember" class="btn add_btn_design">
+                        + 
+                    </button>
+                    <button type="button" id="delmember" class="btn remove_btn_design">
+                        - 
+                    </button>
+                </div>
+            </tr>
+            <tr id = "basetr_group_create" style="width: 100%">
+                <td style="width:55%;height:100%;"> <input type="text" class="phone group_input_design" placeholder="휴대폰번호 입력">  </td>
+                <td style="width:55%;height:100%;"> <input type="text" class="name group_input_design"  placeholder="이름 입력">  </td>
+            </tr>
+            
+        </table>
+
+        <button id="mkgroup" class="btn btn_design1" style="margin-top: 60px; width: 100%;" >그룹생성하기</button>
+        <br><br>
+    </div>
+
 <script>
     //
     //localStorage.setItem("group_database", JSON.stringify(data));
