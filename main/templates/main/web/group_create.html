@@ -23,21 +23,26 @@
     <button id="mkgroup" >그룹생성하기</button>
     <br><br>
 <script>
+    //
     //localStorage.setItem("group_database", JSON.stringify(data));
     //tdstyle =  document.querySelector("#asas").style;
     //console.log(tdstyle[0]);
     //onclick="location.href='{% url 'main:group_list' %}'"
-    addbtn = document.querySelector("#addmember");
-    delbtn = document.querySelector("#delmember");
-    grouptable = document.querySelector("#groupmember");
-    mkgroup = document.querySelector("#mkgroup");
-    addgruopname=document.querySelector("#addgruopname");
-    basetr_group_create=document.querySelector("#basetr_group_create");
+    let addbtn = document.querySelector("#addmember");
+    let delbtn = document.querySelector("#delmember");
+    let grouptable = document.querySelector("#groupmember");
+    let mkgroup = document.querySelector("#mkgroup");
+    let addgruopname=document.querySelector("#addgruopname");
+    let basetr_group_create=document.querySelector("#basetr_group_create");
     let curusername_groupcreate=JSON.parse(localStorage.getItem("curusername"));
     //console.log(curusername);
     let curuseridpw = JSON.parse(localStorage.getItem("curuser"));
     let childnum=1;
     let useridpw_database=JSON.parse(localStorage.getItem("userid_database"));
+    let history_database_rawdata=localStorage.getItem("historydatabase");
+    let history_database={};
+        if (history_database_rawdata){
+            history_database=JSON.parse(history_database_rawdata);}
     let group_rawdata=localStorage.getItem("group_database")
     let group_database
         if (group_rawdata){
@@ -112,12 +117,15 @@
                 alert('그룹에 자기자신이 포함되어야 합니다.');
             }
             else{
+                
                 location.href='{% url 'main:group_list' %}';
                 groupid = Object.keys(group_database).length+1;
                 groupcomponent={};
                 groupcomponent.name=addgruopname.value;
                 groupcomponent.member=memberlist;
                 group_database[groupid]=groupcomponent;
+                history_database['group'+groupid]=[];
+                localStorage.setItem("historydatabase", JSON.stringify(history_database));
                 localStorage.setItem("group_database", JSON.stringify(group_database));
             }
         }
