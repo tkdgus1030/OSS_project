@@ -26,11 +26,11 @@
             return member_[0]===curuser[0] && member_[1]===curusername_grouplist;
         })) curusersGroups.push([groupdatabase[i].name,i])
     }
-    //console.log(groupdatabase)
+    console.log(groupdatabase)
     curusersGroups.forEach(group =>{
         let tr = document.createElement("tr");
         tr.textContent = group[0];
-        tr.id="list"+group[1];
+        tr.id="group"+group[1];
         tr.className="showlist"
         tr.setAttribute("onClick", "location.href='{% url 'main:history' %}'");
         //tr.style="border:1px solid blue; width:200px;height:20px;";
@@ -39,10 +39,10 @@
         document.querySelector("#group_lists").appendChild(tr)
 
     })
-    document.querySelectorAll(".showlist").forEach(gotolist => {
-		gotolist.addEventListener("click", () => {
+    document.querySelectorAll(".showlist").forEach(gotogroup => {
+		gotogroup.addEventListener("click", () => {
             //console.log(gotolist.id)
-            localStorage.setItem("curlistshow",JSON.stringify(gotolist.id));
+            localStorage.setItem("curgroup",JSON.stringify(gotogroup.id));
             
         });
     });

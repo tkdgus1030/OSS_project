@@ -11,8 +11,8 @@ let people = [];
 //     people.forEach(addToList);
 // }
 window.addEventListener("load", () => {
-    // loadPeople();
-    localStorage.clear();
+    localStorage.removeItem("curusername");
+    localStorage.removeItem("curuser");
 });
 function next(e){
     let url = e.getAttribute('url')
