@@ -2,16 +2,24 @@
 
 
 {% block body %}
-<h1>History List - 팀플</h1>
-
-    <table id="userhistorylist" style="border:1px solid black;">
-    <tr id='createnewhistory' onclick="location.href='{% url 'main:calculate' %}'">
-        <td style="border:1px solid blue; width:200px;height:20px;">      +      </td>
-    </tr>
-    <!-- <tr onclick="location.href='{% url 'main:history_detail' %}'">
-        <td style="border:1px solid blue; width:200px;height:20px;">       1차모임      </td>
-    </tr> -->
-    </table>
+    
+    <div style="margin-top: 100px;margin-bottom: 40px">
+            <h3>히스토리 목록</h3>
+    </div>
+    <div class="container-sm" style="width:35%;height:80%;text-align: center;">
+        <table id = "userhistorylist" style="width: 100%; margin-bottom: 30px">
+            <tr class="createnewhistory" onclick="location.href='{% url 'main:calculate' %}'" >
+                <td class="btn btn_design3" style="text-align: center; width: 100%; background-color: lightgrey;">      +      </td>
+            </tr>
+            <tr style="height: 40px">
+            </tr>
+            <!-- <tr onclick="location.href='{% url 'main:history_detail' %}'">
+                <td style="border:1px solid blue; width:200px;height:20px;">       1차모임      </td>
+            </tr> -->
+        </table>
+    </div>
+    <br><br><br><br><br><br>
+    
 <script>
     let groupid=JSON.parse(localStorage.getItem("curgroup"));
     let historydatabase=JSON.parse(localStorage.getItem("historydatabase"));
@@ -24,9 +32,10 @@
         let tr = createnewhistory.cloneNode(true);
         tr.setAttribute("onClick", "");
         tr.id=groupid+"history"+histroy.id;
-        tr.className="historydetail";
+        tr.className="historydetail btn btn_design3";
         tr.childNodes[1].textContent=histroy.name;
-        userhistorylist.appendChild(tr);       
+        tr.style.width = "100%";
+        userhistorylist.appendChild(tr);
     });
     document.querySelectorAll(".historydetail").forEach(history => {
 		history.addEventListener("click", () => {
