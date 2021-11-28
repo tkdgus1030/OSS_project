@@ -33,9 +33,13 @@
     historydatabase[groupid].forEach(histroy => {
         let tr = createnewhistory.cloneNode(true);
         tr.setAttribute("onClick", "");
+        tr.childNodes[1].style.removeProperty("background-color");
         tr.id=groupid+"history"+histroy.id;
-        tr.className="historydetail btn btn_design1";
-        console.log(tr.className)
+        tr.className="historydetail btn btn_design3 d-flex align-items-center";
+        tr.style.backgroundColor="#4CB1DE";
+        tr.style.marginBottom = "20px";
+        tr.style.lineHeight = "40px";
+        console.log(tr.className);
         tr.childNodes[1].textContent=histroy.name;
         tr.style.width = "100%";
         userhistorylist.appendChild(tr);

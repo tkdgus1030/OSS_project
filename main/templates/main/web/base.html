@@ -25,7 +25,7 @@
     <nav class="navbar navbar-light bg-light">
       <div class="container">
           <span style="cursor:pointer;" class="navbar-brand mb-0 h1 pe-auto" onclick="location.href='{% url 'main:index' %}'">Pay G</span>
-          <button  id="usernameshow" class="btn btn-sm btn-primary" ></button>
+          <button  id="usernameshow" class="btn"style="font-weight: bold"></button>
           
       </div>
     </nav>
@@ -44,7 +44,7 @@
     //
     let curusername = localStorage.getItem("curusername");
     if(curusername){
-        iddispbutton.textContent=JSON.parse(curusername);
+        iddispbutton.textContent=JSON.parse(curusername)+' 님';
         iddispbutton.setAttribute("onClick", "location.href='{% url 'main:group_list' %}'");
     }    
     else{
