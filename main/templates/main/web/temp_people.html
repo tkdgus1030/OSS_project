@@ -1,9 +1,16 @@
 {% extends 'main/web/base.html' %}
 {% load static %}
 
+
+{% block clear_button %}
+        <button   id="clearlocalstorage" class="btn btn-sm btn-danger"  style="float: right;">ClearLocalstorage</button>
+{% endblock %}
 {% block script %}
     <script src="{% static 'js/people.js' %}"></script>
 
+{% endblock %}
+{% block clear_button %}
+    <button   id="clearlocalstorage" class="btn btn-sm btn-danger"  style="float: right;">ClearLocalstorage</button>
 {% endblock %}
 {% block body %}
     <div style="margin-top: 100px;margin-bottom: 40px">
