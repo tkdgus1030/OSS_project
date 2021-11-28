@@ -1,4 +1,5 @@
 # Pay G
+
 ![main_picture](https://user-images.githubusercontent.com/63357094/143764869-53d2e934-7273-4ac2-9c8e-ad0e5ec23c81.png)
 Open Source Software Project
 
@@ -7,7 +8,7 @@ Team 10: 김세란, 김예린 박상현
 
 ## Brief Overview
 
- 
+
 Pay G는 여행이나 모임이 있어서 총무 역할을 해줍니다. 여러 명이서 돈을 함께 써서 서로 송금을 해줘야 할 일이 생겼을 때 Pay G는 유용하게 사용됩니다. 가격과 계산한 사람, 함께한 사람만 입력하면, 가장
 최선의 수로 누가 누구에게 송금을 해야하는 지 알려줍니다. Pay G로 더욱 편안한 돈계산을 해보세요!
 
@@ -17,8 +18,10 @@ Pay G는 여행이나 모임이 있어서 총무 역할을 해줍니다. 여러 
 
 
 
-+ 단순한 총합이 아닌, 누가 누구에게 송금을 해야 가장 적게 돈계산이 완료되는지 자세한 설명!
-+ 로그인 없이 간편한 계산 기능 활용!
++ 무조건 1/N 계산이 아닌, 체크박스를 통해 결제 내역의 대상자를 그룹 내에서 선택 가능!
++ 복잡한 내역을 가장 적은 송금 횟수로 계산!
++ 단순한 총합이 아닌, 누가 누구에게 송금을해야 하는 지 자세한 설명!
++ 로그인 없이 간편한 계산 기능도 가능!
 + 로그인 시 계산 내역 기록하여 언제든지 열람 가능!
 + 자주 모이는 사람들과 그룹을 형성 해 사용 가능!
 + 깔끔하고 디자인의 간편한 웹페이지!
@@ -36,26 +39,20 @@ $ python --version
 
 ```
 
-<br>
-
 __1. venv 설치__
 
-root에 설치 권장한다.
+root에 설치 권장
 
 ```bash
 $ python -m venv venv
 # $ python3 -m venv venv 
 ```
 
-<br>
-
 __2. requirements.txt 설치__
 
 ```bash
 $ pip install -r requirements.txt
 ```
-
-<br>
 
 __3. 로컬 서버 실행__
 
@@ -73,20 +70,17 @@ $ python manave.py runserver
 # Quit the server with CONTROL-C.
 ```
 
-<br>
-
 __4. 로컬 서버 접속__
 
 해당 예시에서는 다음과 같은 url로 접속할 수 있다 : http://127.0.0.1:8000/
 
-<br><br>
+
 
 ## How to Use
 
----
 __예시__ : 팀프로젝트를 위해 만나, 즐거운 시간을 가진 3명! 각자 계산한 내역이 달라 서로 송금을 해줘야하는 상황에 처해있다. 이럴때 Pay G를 어떻게 활용할 수 있는 지 알아보자!
 
-<br>  
+  
 
 
 __1. 로그인없이 사용__
@@ -103,7 +97,7 @@ __1. 로그인없이 사용__
 + 계산 결과
   <img width="1440" alt="temp_result" src="https://user-images.githubusercontent.com/76947209/143733394-b4de6817-d6f5-42cd-94b7-fa97d89b5d04.png">
 
-<br>  
+  
 
 __2. 로그인 후 사용__
 
@@ -118,7 +112,7 @@ __2. 로그인 후 사용__
 
 + 계산 결과
 
-<br><br>
+
 
 ## How to Contribute
 
@@ -164,7 +158,7 @@ __2. 로그인 후 사용__
 + version 2.7.2 : History_detail.html UI 개선
 + version 3.0.0 : 모든 기능 구현
 
-<br><br>
+
 
 ## User Database Management
 
@@ -186,15 +180,15 @@ __2. 로그인 후 사용__
 
 
 + Permissions
-    - Distribution
-    - Modification
-    - Private use
+  - Distribution
+  - Modification
+  - Private use
 + Conditions
-    - License and copyright notice
+  - License and copyright notice
 + Limitations
-    - Commercial use
-    - Liability
-    - Warranty
+  - Commercial use
+  - Liability
+  - Warranty
 
 
 
@@ -204,8 +198,3 @@ __2. 로그인 후 사용__
 
 + [로그인 기능 미사용 버전 비디오](https://youtu.be/_fTBQUddHy4)
 + (링크 추가) : 로그인 기능 사용
-
-
-
-
-
