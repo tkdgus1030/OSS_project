@@ -24,6 +24,7 @@ for(let i=0;i<people.length;i++){
 function saveRes(){
     console.log(res_table);
     localStorage.setItem("resTable", JSON.stringify(res_table));
+    localStorage.setItem("calculateresult", JSON.stringify(res_table));
 };
 
 function del_(name, btn_obj){
@@ -328,7 +329,7 @@ function result(){
 }
 window.addEventListener("load", () => {
     people_rawdata = JSON.parse(localStorage.getItem("people"));
-    people=people_rawdata.map(person =>{
+    people=people.map(person =>{
         console.log(person[1])
         return person[1];
     })
@@ -341,7 +342,7 @@ window.addEventListener("load", () => {
         }
     }
     saveRes();
-    localStorage.setItem("people", JSON.stringify(people_rawdata));
+    localStorage.setItem("people", JSON.stringify(people));
 
 
 });
