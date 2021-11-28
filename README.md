@@ -111,7 +111,7 @@ __2. 로그인 후 사용__
 + 로그인
  <img width="1440" alt="people" src="https://user-images.githubusercontent.com/76947209/143733392-0ce418c2-af93-4bee-a07a-c4c2ef4803b3.png">
 + 그룹 리스트
- <img width="1440" alt="people" src="https://user-images.githubusercontent.com/76947209/143733392-0ce418c2-af93-4bee-a07a-c4c2ef4803b3.png">
+ <img width="1440" alt="people" src="https://user-images.githubusercontent.com/63357094/143770808-2db86a9c-8179-45f6-846c-2d7329ec6fc3.png">
 + 그룹 정산 내역 리스트
  <img width="1440" alt="people" src="https://user-images.githubusercontent.com/76947209/143733392-0ce418c2-af93-4bee-a07a-c4c2ef4803b3.png">
 + 그룹 정산 내역 상세페이지
