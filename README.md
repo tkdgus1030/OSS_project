@@ -164,6 +164,7 @@ __2. 로그인 후 사용__
 + version 2.7.2 : History_detail.html UI 개선
 + version 2.8.0 : 다운로드 기능 구현 완료
 + version 2.8.1 : History_detail.html title표시 버그 수정
++ version 2.9.0 : 모든 페이지 title 깔끔하게 수정
 + version 3.0.0 : 모든 기능 구현
 
 
