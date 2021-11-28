@@ -88,6 +88,7 @@ function add_(name, btn_obj){
         let amount = amount_input.value / n;
         let object = object_input.value;
         let ele = {'object':object ,'amount':amount};
+        console.log(ele,res_table)
         res_table[from][to].push(ele);
     });
     saveRes();
@@ -327,6 +328,10 @@ function result(){
 }
 window.addEventListener("load", () => {
     people = JSON.parse(localStorage.getItem("people"));
+    people=people.map(person =>{
+        console.log(person[1])
+        return person[1];
+    })
     //localStorage.clear();
     res_table = createArray(people.length, people.length);
     for(let i=0;i<people.length;i++){

@@ -35,8 +35,11 @@
         tr.setAttribute("onClick", "");
         tr.id=groupid+"history"+histroy.id;
         tr.className="historydetail btn btn_design1";
+        
+        //tr.style.removeProperty("background-color");
         console.log(tr.className)
         tr.childNodes[1].textContent=histroy.name;
+        tr.childNodes[1].style.removeProperty("background-color");
         tr.style.width = "100%";
         userhistorylist.appendChild(tr);
     });

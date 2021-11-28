@@ -1,13 +1,20 @@
 {% extends 'main/web/base.html' %}
+{% load static %}
+{% block script %}
+    <script src="{% static 'js/calculate_group.js' %}"></script>
 
-
+{% endblock %}
 {% block body %}
 <h1 id="historytitle">History List - Group 1 - History Detail 0 </h1>
 <div>
     <span  style="font-size: 120%;"></span>
 </div>
+<a class="btn btn_design1" style="width:30%; margin-bottom: 40px; margin-top: 20px" href="#result" onclick="result()">결과보기</a>
 <button  id="download" class="download btn btn-sm btn-primary" >히스토리 다운로드</button>
 <script>
+   
+
+
     function download(filename, text) {
 			var pom = document.createElement('a');
 			pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
@@ -22,7 +29,7 @@
 				pom.click();
 			}
 	}
-
+    //console.log(JSON.parse(localStorage.getItem("people")));
     let historyid=JSON.parse(localStorage.getItem("historyid"));
     let groupid=JSON.parse(localStorage.getItem("curgroup"));
     let historydatabase=JSON.parse(localStorage.getItem("historydatabase"));
@@ -45,8 +52,69 @@
             //console.log(1231441)
             download("History List - " + groupid+ ' - ' + curhistoryname+': Detail', historycomponent);
     });
+    people = JSON.parse(localStorage.getItem("people"));
+    res_table=JSON.parse(localStorage.getItem("resTable"));
+    people=people.filter(person =>{
+        return person[1];
+    })
+    result();
+    function result(){
+        $('.res_div1').html('<br><p>송금 내역</p>');
+        $('.res_table').html(' <tr>\n' +
+            '                <th>이름</th>\n' +
+            '                <th>결제한 금액</th>\n' +
+            '                <th>사용 금액</th>\n' +
+            '                <th>총</th>\n' +
+            '            </tr><br>');
+        $('.res_div2').html('<br>')
+        $('.res_div3').html('<br>')
+        $('.res_div4').html('<br>')
+        
+        let remittance = [];
+        let total = 0;
 
-    
-    
+        for(let p1 = 0 ; p1 < people.length; p1++){
+            let tr = document.createElement('tr');
+            let name_td = document.createElement('td');
+            let name_div = document.createElement('div');
+            name_div.append(people[p1]);
+            name_td.append(name_div);
+            let td2 = document.createElement('td');
+            let td2_div = document.createElement('div');
+            let res1= 0;
+            res_table[p1].forEach((arr)=>{
+                arr.forEach((ele)=>{
+                    res1 += ele.amount;
+                })
+            })
+            total += res1;
+            
+            td2_div.append(res1);
+            td2.append(td2_div);
+            let td3 = document.createElement('td');
+            let td3_div = document.createElement('div');
+            let res2 = 0;
+            for(let p2 =0;p2< people.length;p2++){
+                res_table[p2][p1].forEach((ele)=>{
+                    res2 += ele.amount;
+                })
+            }
+            
+            td3_div.append(res2);
+            td3.append(td3_div);
+            let td4 = document.createElement('td');
+            let td4_div = document.createElement('div');
+            let res3 = res1 - res2;
+            remittance[p1] = [p1, res3];
+            
+            td4_div.append(res3);
+            td4.append(td4_div);
+            tr.append(name_td);
+            tr.append(td2);
+            tr.append(td3);
+            tr.append(td4);
+            $('.res_table').append(tr);
+    }
+}
 </script>
 {% endblock %}

@@ -89,6 +89,7 @@ function add_(name, btn_obj){
         let object = object_input.value;
         let ele = {'object':object ,'amount':amount};
         res_table[from][to].push(ele);
+        
     });
     saveRes();
 
