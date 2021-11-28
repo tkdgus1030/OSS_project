@@ -20,6 +20,7 @@
     let groupdatabase = JSON.parse(localStorage.getItem("group_database"));
     //console.log(historydatabase)
     
+    
     historydatabase[groupid].forEach(histroy => {
         let tr = createnewhistory.cloneNode(true);
         tr.setAttribute("onClick", "");
