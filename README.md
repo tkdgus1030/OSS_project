@@ -109,6 +109,8 @@ __2. 로그인 후 사용__
 
 + 메인 화면
   <img width="1440" alt="main" src="https://user-images.githubusercontent.com/76947209/143733386-80495f1c-c08e-4a9f-931a-3857672f6f27.png">
++ 회원 가입
+ <img width="1440" alt="main" src="ttps://user-images.githubusercontent.com/63357094/143770535-7e47988e-aaf3-4dcf-87a8-610f59490368.png">
 
 + 그룹 추가
 
