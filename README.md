@@ -73,9 +73,13 @@ $ python manave.py runserver
 
 1. 로그인없이 사용
     + 메인 화면
+    <img width="1440" alt="main" src="https://user-images.githubusercontent.com/76947209/143733386-80495f1c-c08e-4a9f-931a-3857672f6f27.png">
     + 멤버 추가
+    <img width="1440" alt="people" src="https://user-images.githubusercontent.com/76947209/143733392-0ce418c2-af93-4bee-a07a-c4c2ef4803b3.png">
     + 계산 내역 
+    <img width="1440" alt="temp_calculate" src="https://user-images.githubusercontent.com/76947209/143733393-7cf318e1-097d-4fab-a186-ba9ce7058add.png">
     + 계산 결과
+    <img width="1440" alt="temp_result" src="https://user-images.githubusercontent.com/76947209/143733394-b4de6817-d6f5-42cd-94b7-fa97d89b5d04.png">
 
 
 2. 로그인 후 사용 
