@@ -35,7 +35,8 @@
 <br>
 
 <script>
-
+    let remittance;
+    let remittancestr="";
     function download(filename, text) {
 			var pom = document.createElement('a');
 			pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
@@ -76,12 +77,25 @@
 
     ////////
     let historytitle = document.getElementById("historytitle");
-    {#console.log(historytitle);#}
-    historytitle.innerHTML= "History List - " + groupid+ ' - ' + curhistoryname+': Detail' ;
-    
+    let download_people=JSON.parse(localStorage.getItem("people"));
     document.getElementById("download").addEventListener("click", () => {
-            //console.log(1231441)
-            download("History List - " + groupid+ ' - ' + curhistoryname+': Detail', historycomponent);
+            let downloadstr="   전화번호     이름\t결제대상\t사용한금액\t 사용한 사람 \n";
+            console.log(remittance,12313)
+            historycomponent.forEach((person__,i)=>{
+                person__.forEach(element => {
+                    console.log(element["object"])
+                    downloadstr+=download_people[i][0]+" "+download_people[i][1]+"\t"+element["object"]+"\t"+element["amount"]+'\t';
+                    downloadstr+=JSON.stringify(element["checked_people"])+"\n";
+                });
+            })
+            
+            //console.log(historycomponent,12313)
+            if (remittance!=undefined){
+                downloadstr+="\n\n송금내역\n이름\t결제한 금액\t사용 금액\t총\n";
+                downloadstr+=remittancestr;
+            }
+            
+            download("History List - " + groupid+ ' - ' + curhistoryname+': Detail', downloadstr);
     });
     //////// 제목 ---------
 
@@ -218,7 +232,7 @@ function result(){
     $('.res_div3').html('<br>')
     $('.res_div4').html('<br>')
 
-    let remittance = [];
+    remittance = [];
     let total = 0;
 
     for(let p1 = 0 ; p1 < people.length; p1++){
@@ -247,12 +261,15 @@ function result(){
                 res2 += ele.amount;
             })
         }
-
+        remittancestr+=people[p1]+'\t';
+        remittancestr+=res1+'\t';
+        remittancestr+=res2+'\t';
         td3_div.append(res2);
         td3.append(td3_div);
         let td4 = document.createElement('td');
         let td4_div = document.createElement('div');
         let res3 = res1 - res2;
+        remittancestr+=res3+'\n';
         remittance[p1] = [p1, res3];
 
         td4_div.append(res3);
@@ -267,6 +284,7 @@ function result(){
     let total_div = document.createElement('div');
     total_div.className = "total_string";
     let tstring = `총 금액은 ${total}원! `;
+    remittancestr+='\n'+tstring+'\n';
     total_div.append(tstring);
     $('.res_div2').append(total_div);
 
@@ -286,6 +304,7 @@ function result(){
                 let rem_div = document.createElement('div');
                 rem_div.className = "remittance result_string";
                 let string = `${people[remittance[i][0]]}은(는) ${people[remittance[j][0]]}에게 ${-remittance[i][1]}원 송금!`;
+                remittancestr+=string+'\n';
                 rem_div.append(string);
                 $('.res_div3').append(rem_div);
                 //console.log(`${people[remittance[i][0]]}은(는) ${people[remittance[j][0]]}에게 ${-remittance[i][1]}원 송금!`);
@@ -296,6 +315,7 @@ function result(){
                 let rem_div = document.createElement('div');
                 rem_div.className = "remittance result_string";
                 let string = `${people[remittance[i][0]]}은(는) ${people[remittance[j][0]]}에게 ${remittance[j][1]}원 송금!`;
+                remittancestr+=string+'\n';
                 rem_div.append(string);
                 $('.res_div3').append(rem_div);
                 //console.log(`${people[remittance[i][0]]}은(는) ${people[remittance[j][0]]}에게 ${remittance[j][1]}원 송금!`);
