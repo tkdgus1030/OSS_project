@@ -1,33 +1,36 @@
 # Pay G
----    
+
 ![main_picture](https://user-images.githubusercontent.com/63357094/143764869-53d2e934-7273-4ac2-9c8e-ad0e5ec23c81.png)
+Open Source Software Project
 
+Team 10: 김세란, 김예린 박상현
 
-<br><br>
 
 ## Brief Overview
 
----  
+
 Pay G는 여행이나 모임이 있어서 총무 역할을 해줍니다. 여러 명이서 돈을 함께 써서 서로 송금을 해줘야 할 일이 생겼을 때 Pay G는 유용하게 사용됩니다. 가격과 계산한 사람, 함께한 사람만 입력하면, 가장
 최선의 수로 누가 누구에게 송금을 해야하는 지 알려줍니다. Pay G로 더욱 편안한 돈계산을 해보세요!
 
-<br><br>
+
 
 ## Function
 
----
 
-+ 단순한 총합이 아닌, 누가 누구에게 송금을 해야 가장 적게 돈계산이 완료되는지 자세한 설명!
-+ 로그인 없이 간편한 계산 기능 활용!
+
++ 무조건 1/N 계산이 아닌, 체크박스를 통해 결제 내역의 대상자를 그룹 내에서 선택 가능!
++ 복잡한 내역을 가장 적은 송금 횟수로 계산!
++ 단순한 총합이 아닌, 누가 누구에게 송금을해야 하는 지 자세한 설명!
++ 로그인 없이 간편한 계산 기능도 가능!
 + 로그인 시 계산 내역 기록하여 언제든지 열람 가능!
 + 자주 모이는 사람들과 그룹을 형성 해 사용 가능!
 + 깔끔하고 디자인의 간편한 웹페이지!
 
-<br><br>
 
-## Installation
 
----
+## Installation & Run
+
+
 __0. python 설치(3이상)__
 
 ```bash
@@ -36,26 +39,20 @@ $ python --version
 
 ```
 
-<br>
-
 __1. venv 설치__
 
-root에 설치 권장한다.
+root에 설치 권장
 
 ```bash
 $ python -m venv venv
 # $ python3 -m venv venv 
 ```
 
-<br>
-
 __2. requirements.txt 설치__
 
 ```bash
 $ pip install -r requirements.txt
 ```
-
-<br>
 
 __3. 로컬 서버 실행__
 
@@ -73,20 +70,17 @@ $ python manave.py runserver
 # Quit the server with CONTROL-C.
 ```
 
-<br>
-
 __4. 로컬 서버 접속__
 
 해당 예시에서는 다음과 같은 url로 접속할 수 있다 : http://127.0.0.1:8000/
 
-<br><br>
+
 
 ## How to Use
 
----
 __예시__ : 팀프로젝트를 위해 만나, 즐거운 시간을 가진 3명! 각자 계산한 내역이 달라 서로 송금을 해줘야하는 상황에 처해있다. 이럴때 Pay G를 어떻게 활용할 수 있는 지 알아보자!
 
-<br>  
+  
 
 
 __1. 로그인없이 사용__
@@ -103,7 +97,7 @@ __1. 로그인없이 사용__
 + 계산 결과
   <img width="1440" alt="temp_result" src="https://user-images.githubusercontent.com/76947209/143733394-b4de6817-d6f5-42cd-94b7-fa97d89b5d04.png">
 
-<br>  
+  
 
 __2. 로그인 후 사용__
 
@@ -118,31 +112,57 @@ __2. 로그인 후 사용__
 
 + 계산 결과
 
-<br><br>
+
 
 ## How to Contribute
 
----
+
 
 여행이나 모임 후에 한사람이 총무를 맡아서 계산을 해야하는 경우가 많고, 이럴 경우 정확하지 않거나 복잡하게 분배가 이루어진다. PayG는 그러한 사람들의 불편 사항을 개선해주는 것에 기여한다.   
 이제 PayG를 사용하면 참여 인원이 항상 달라 돈 계산이 머리 아픈 상황이나, 송금 시 불필요한 횟수가 줄어들 것이다.
 
-<br><br>
+
 
 ## Versions
 
----
 
 + version 0.0.0 : 백엔드가 필요하지 않는 부분 프론트엔드 구현
-+ version 1.0.0 : 백엔드(유저, 그룹, 히스토리 데이터 베이스) 구현
-+ version 2.0.0 : 백엔드, 데이터베이스 구현과 프론트엔드 구현 및 버그 수정
++ version 1.0.0 : 백엔드(유저, 그룹, 히스토리 데이터 베이스) 구현 시작
++ version 1.0.1 : 로그인 구현(아직 user data가 구현되지 않아 올바은 phone.No / PW인지 구별은 할 수 없음)
++ version 1.1.0 : 로그인 기능 보완, 사용자 database를 불러와 존재하는 휴대폰 번호와 비밀번호를 입력해야만 로그인 되도록 설정
++ version 1.2.0 : 회원가입 구현 및 temp_calculate의 delete 기능, 계산 기능 구현
++ version 1.2.1 : 회원가입 구현 및 버그 제거
++ version 1.3.0 : 그룹 리스트 표시 구현
++ version 1.4.0 : 그룹 생성 및 사용자별 그룹 리스트 표시 구현
++ version 1.4.1 : group create에서 멤버 수 추가, 삭제 기능 구현, 중복된 group 체크, 입력한 멤버가 올바른지(전화번호, 이름이 실제로 존재하는지) 체크하는 기능 구현
++ version 1.4.2 : 그룹 생성시 자기자신도 포함하도록 수정
++ version 1.4.3 : Group list에서 history로 link하는 과정 구현 및 Group list를 database와 연동
++ version 1.4.4 : Group list에서 생성되는 tr이 child tr이 맨 처음 tr의 class, type, 형식 등을 상속받도록 수정
++ version 1.5.0 : history list와 group 연동, history list에 새로운 history 추가하는 기능 구현
++ version 2.0.0 : 백엔드 alpha 완료 및 다운로드 기능, calculate와 localstorage 연동 구현, 프론트엔드 구현 및 버그 수정 시작
++ version 2.1.0 : 결과보기 창 제외 대부분의 html css js의 디자인 수정 완료
++ version 2.2.0 : 모든 html의 디자인 구현과 결과 보기 창의 송금 내역 완료
++ version 2.3.0 : CSS정돈, local storage clear button 코드 위치 수정, 초기화버튼 추가, localstorage버튼 삭제
++ version 2.3.1 : 이전 버전에서 발생한 오류 수정
++ version 2.3.2 ~ 2.3.5: Bug 발생으로 인해 2.3.1로 Revert
++ version 2.3.6 : 썸네일 thumbnail.png 제작 및 추가
++ version 2.4.0 : History_detail.html 백엔드 연동 구현 시작
++ version 2.4.1 : History_list.html css 완성, 모든 css 완료
++ version 2.4.2 ~ 2.4.4 : History_detail.html 수정
++ version 2.5.0 : History_detail.html과 Calculate_group.js간 DB연동
++ version 2.5.1 : 2.5.0 버그수정
++ version 2.6.0 : History_detail.html에서 히스토리.txt 다운로드 기능 구현
++ version 2.6.1 : home.html에서 로그아웃 기능 구현
++ version 2.7.0 : History_detail.html에 DB에 맞게 정산 내역 표시 구현
++ version 2.7.1 : History_detail.html에서 다운로드 버튼이 비정상적으로 표시되는 버그 수정
++ version 2.7.2 : History_detail.html UI 개선
 + version 3.0.0 : 모든 기능 구현
 
-<br><br>
+
 
 ## User Database Management
 
----
+
 모든 사용자의 데이터는 아래 ER diagram과  이루어져 있다.
 
 ![userdatabase](https://user-images.githubusercontent.com/63357094/143764303-c8589882-a39b-4e9d-bb84-f61dbd730f7d.png)
@@ -153,33 +173,28 @@ __2. 로그인 후 사용__
 + 각 group은 history list라는 attribute를 가지고 있으며 각 history는 group based id를 가진다.
 + 각 history는 해당 정산에 참여한 user의 list와 이와 관련된 결제 내역을 포함하고 있다.
 
-<br><br>
+
 
 ## License
 
----
+
 
 + Permissions
-    - Distribution
-    - Modification
-    - Private use
+  - Distribution
+  - Modification
+  - Private use
 + Conditions
-    - License and copyright notice
+  - License and copyright notice
 + Limitations
-    - Commercial use
-    - Liability
-    - Warranty
+  - Commercial use
+  - Liability
+  - Warranty
 
-<br><br>
+
 
 ## Demo Video
 
----
+
 
 + [로그인 기능 미사용 버전 비디오](https://youtu.be/_fTBQUddHy4)
 + (링크 추가) : 로그인 기능 사용
-
-
-
-
-
