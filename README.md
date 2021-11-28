@@ -1,6 +1,4 @@
 # Pay G
-![thumbnail](https://user-images.githubusercontent.com/63357094/143764832-b1baf87a-ed6c-4615-bf82-c33de816588e.png)
-
 ---    
 
 <br><br>
