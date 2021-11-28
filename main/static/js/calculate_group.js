@@ -327,8 +327,8 @@ function result(){
     }
 }
 window.addEventListener("load", () => {
-    people = JSON.parse(localStorage.getItem("people"));
-    people=people.map(person =>{
+    people_rawdata = JSON.parse(localStorage.getItem("people"));
+    people=people_rawdata.map(person =>{
         console.log(person[1])
         return person[1];
     })
@@ -341,7 +341,7 @@ window.addEventListener("load", () => {
         }
     }
     saveRes();
-    localStorage.setItem("people", JSON.stringify(people));
+    localStorage.setItem("people", JSON.stringify(people_rawdata));
 
 
 });

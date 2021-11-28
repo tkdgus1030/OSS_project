@@ -32,13 +32,13 @@ Pay G로 더욱 편안한 돈계산을 해보세요!
 ## 설치 방법
 
 ---
-0. python 설치(3이상)
+__0. python 설치(3이상)__
 ```bash
 $ python --version
 # Python 3.8.8 
 
 ```
-1. venv 설치 
+__1. venv 설치__
 
 root에 설치 권장한다.
 
@@ -46,12 +46,12 @@ root에 설치 권장한다.
 $ python -m venv venv
 # $ python3 -m venv venv 
 ```
-2. requirements.txt 설치
+__2. requirements.txt 설치__
 
 ```bash
 $ pip install -r requirements.txt
 ```
-3. 로컬 서버 실행
+__3. 로컬 서버 실행__
 
 manage.py 가 있는 root에서 명령어 입력
 
@@ -67,7 +67,7 @@ $ python manave.py runserver
 # Quit the server with CONTROL-C.
 ```
 
-4. 로컬 서버 접속
+__4. 로컬 서버 접속__
 
 해당 예시에서는 다음과 같은 url로 접속할 수 있다 : http://127.0.0.1:8000/
   
@@ -105,11 +105,11 @@ __예시__ : 팀프로젝트를 위해 만나, 즐거운 시간을 가진 3명! 
   
   
   
-##데모 영상
+## 데모 영상
 
 ---
 
-(링크 추가) : 로그인 기능 미사용  
+[로그인 기능 미사용 버전 비디오](https://youtu.be/_fTBQUddHy4)  
 (링크 추가) : 로그인 기능 사용
 
 
