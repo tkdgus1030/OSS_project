@@ -28,7 +28,7 @@ Pay G는 여행이나 모임이 있어서 총무 역할을 해줍니다. 여러 
 
 
 ## Prerequisite
-__python 설치(3이상)
+__python 설치(3이상)__
 ```bash
 $ python --version
 # Python 3.8.8 
