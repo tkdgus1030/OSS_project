@@ -76,12 +76,13 @@
         }
         else{
         let calculateresult = JSON.parse(localStorage.getItem("calculateresult"));
-        console.log(calculateresult,'qadqdqwd')
         let newhistory={};
         let curgrouphistorynum=historydatabase_add[groupid].length;
-        newhistory.id = curgrouphistorynum + 1; 
+        newhistory.id = curgrouphistorynum + 1;
+        newhistory.people = localStorage.getItem('people');
         newhistory.name = historyname.value;
         newhistory.component = calculateresult; //계산결과가 들어가는 부분
+        newhistory.res_table = localStorage.getItem('resTable') //계산결과가 들어가는 부분
         historydatabase_add[groupid].push(newhistory);
         localStorage.setItem("historydatabase",JSON.stringify(historydatabase_add));
         location.href='{% url 'main:history' %}'
