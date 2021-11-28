@@ -82,7 +82,7 @@ __4. 로컬 서버 접속__
 
 
 
-## How to Use
+## How to Use(with Demo Video)
 
 __예시__ : 팀프로젝트를 위해 만나, 즐거운 시간을 가진 3명! 각자 계산한 내역이 달라 서로 송금을 해줘야하는 상황에 처해있다. 이럴때 Pay G를 어떻게 활용할 수 있는 지 알아보자!
 
@@ -104,27 +104,11 @@ __1. 로그인없이 사용__
   <img width="1440" alt="temp_result" src="https://user-images.githubusercontent.com/76947209/143733394-b4de6817-d6f5-42cd-94b7-fa97d89b5d04.png">
 
   
++ [비회원 버전 비디오](https://youtu.be/coTLcfuYR0M)
 
 __2. 로그인 후 사용__
 
-+ 메인 화면
-  <img width="1440" alt="main" src="https://user-images.githubusercontent.com/76947209/143733386-80495f1c-c08e-4a9f-931a-3857672f6f27.png">
-+ 회원 가입
- <img width="1440" alt="main" src="https://user-images.githubusercontent.com/63357094/143770535-7e47988e-aaf3-4dcf-87a8-610f59490368.png">
-
-+ 그룹 추가
-
-+ 그룹 내역
-
-+ 그룹 계산 내역 히스토리
-
-+ 그룹 계산 내역 상세 히스토리
-
-+ 그룹 계산 내역 상세 히스토리 다운로드
-
-+ 계산 내역
-
-+ 계산 결과
++ [회원 버전 비디오](https://youtu.be/NEK4u1khsu4)
 
 
 
@@ -197,10 +181,3 @@ __2. 로그인 후 사용__
 [MIT License](https://github.com/tkdgus1030/OSS_project/blob/main/LICENSE)
 
 
-
-## Demo Video
-
-
-
-+ [비회원 버전 비디오](https://youtu.be/coTLcfuYR0M)
-+ [회원 버전 비디오](https://youtu.be/NEK4u1khsu4)
