@@ -1,48 +1,53 @@
 {% extends 'main/web/base.html' %}
 {% load static %}
 {% block body %}
-<div style="margin-top: 100px;margin-bottom: 40px">
-    <h3 id="historytitle"></h3>
-</div>
 
-<div>
-    <span  style="font-size: 120%;"></span>
-</div>
-<div>
-    <table class="cal_table" style="margin:30px auto;">
-        <tr>
-            <th style="padding:0px 30px;">결제한사람</th>
-            <th style="padding:0px 30px;">결제 대상</th>
-            <th style="padding:0px 30px;">결제 금액</th>
 
-            <th><div id="people_list" class="row-vh d-flex flex-row justify-content-between" style="flex-grow:1"></div></th>
+    <div style="margin-top: 100px;margin-bottom: 40px">
+        <h1 id="historytitle"></h1>
+    </div>
+    <div>
+        <span style="font-size: 120%;"></span>
+    </div>
+    <div>
+        <table class="cal_table" style="margin:30px auto;">
+            <tr>
+                <th style="padding:0px 30px;">결제한사람</th>
+                <th style="padding:0px 30px;">결제 대상</th>
+                <th style="padding:0px 30px;">결제 금액</th>
+
+                <th><div id="people_list" class="row-vh d-flex flex-row justify-content-between" style="flex-grow:1"></div></th>
             <th></th>
         </tr>
 
-    </table>
-</div>
-<a class="btn btn_design1" style="width:30%; margin-bottom: 40px; margin-top: 20px" href="#result" onclick="result()">결과보기</a>
-<div class="" id="result" style="margin:50px 0px;">
-    <div style="width: 50%;background-color: lightgrey; border-radius: 20px;margin: auto;">
-        <div class="res_div1" style="text-align: center; font-weight: bold; font-size: 20px;"></div>
-        <table class="res_table table table-borderless" style="margin: 15px auto;">
         </table>
-        <div class = "res_div2"></div>
-        <div class = "res_div3"></div>
-        <div class = "res_div4"></div>
+    </div>
+    <a class="btn btn_design1" style="width:30%; margin-bottom: 40px; margin-top: 20px" href="#result"
+       onclick="result()">결과보기</a>
+    <div class="" id="result" style="margin:50px 0px;">
+        <div style="width: 50%;background-color: lightgrey; border-radius: 20px;margin: auto;">
+            <div class="res_div1" style="text-align: center; font-weight: bold; font-size: 20px;"></div>
+            <table class="res_table table table-borderless" style="margin: 15px auto;">
+            </table>
+            <div class="res_div4"></div>
+        </div>
+        <div class="res_div2"></div>
+        <div class="res_div3"></div>
+        <br>
+        <div>
+            <button id="download" class="download btn btn_design2" style="margin-top: 20px; width:30%;">히스토리 다운로드
+            </button>
+        </div>
     </div>
     <br>
-<div><button  id="download" class="download btn btn-sm btn-primary" >히스토리 다운로드</button>
-</div>
-</div>
-<br>
 
-<script>
-    let remittance;
-    let remittancestr="";
-    function download(filename, text) {
-			var pom = document.createElement('a');
-			pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    <script>
+        let remittance;
+        let remittancestr = "";
+
+        function download(filename, text) {
+            var pom = document.createElement('a');
+            pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
 			pom.setAttribute('download', filename);
 		
 			if (document.createEvent) {
