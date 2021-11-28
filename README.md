@@ -27,15 +27,21 @@ Pay G는 여행이나 모임이 있어서 총무 역할을 해줍니다. 여러 
 + 깔끔하고 디자인의 간편한 웹페이지!
 
 
+## Prerequisite
+__python 설치(3이상)
+```bash
+$ python --version
+# Python 3.8.8 
+
+```
 
 ## Installation & Run
 
 
-__0. python 설치(3이상)__
+__0. git clone__
 
 ```bash
-$ python --version
-# Python 3.8.8 
+$ git clone https://github.com/tkdgus1030/OSS_project
 
 ```
 
