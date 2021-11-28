@@ -132,7 +132,8 @@ __2. 로그인 후 사용__
 
 ---
 
-+ version 1.0.0 : 백엔드가 필요하지 않는 부분 프론트엔드 구현
++ version 0.0.0 : 백엔드가 필요하지 않는 부분 프론트엔드 구현
++ version 1.0.0 : 백엔드(유저, 그룹, 히스토리 데이터 베이스) 구현
 + version 2.0.0 : 백엔드, 데이터베이스 구현과 프론트엔드 구현 및 버그 수정
 + version 3.0.0 : 모든 기능 구현
 
@@ -141,8 +142,14 @@ __2. 로그인 후 사용__
 ## User Database Management
 
 ---
+모든 사용자의 데이터는 아래 ER diagram처럼 이루어져 있다.
 ![userdatabase](https://user-images.githubusercontent.com/63357094/143764303-c8589882-a39b-4e9d-bb84-f61dbd730f7d.png)
 
+각 사용자는 휴대폰 번호를 Id key로 가지고 있고 user들은 group을 만들 수 있다.
+각 group또한 고유한 id를 가진다. 
+한 user는 여러 group에 속할 수 있고 group은 최소 1명 이상의 user를 포함한다.
+각 group은 history list라는 attribute를 가지고 있으며 각 history는 group based id를 가진다.
+각 history는 해당 정산에 참여한 user의 list와 이와 관련된 결제 내역을 포함하고 있다.
 
 <br><br>
 
