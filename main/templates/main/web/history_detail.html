@@ -1,7 +1,7 @@
 {% extends 'main/web/base.html' %}
 {% load static %}
 {% block body %}
-<h1 id="historytitle">History List - Group 1 - History Detail 0 </h1>
+<h1 id="historytitle"></h1>
 <div>
     <span  style="font-size: 120%;"></span>
 </div>
@@ -54,6 +54,7 @@
 	//////////////////////////
     let people;
     let historyid=JSON.parse(localStorage.getItem("historyid"));
+    let groupdatabase=JSON.parse(localStorage.getItem("group_database"));
     let groupid=JSON.parse(localStorage.getItem("curgroup"));
     let historydatabase=JSON.parse(localStorage.getItem("historydatabase"));
     let historycomponent;
@@ -77,6 +78,8 @@
 
     ////////
     let historytitle = document.getElementById("historytitle");
+    console.log(groupdatabase,"gggggg")
+    historytitle.innerHTML= "History List - " + groupdatabase[groupid.split("group")[1]].name+ ' - ' + curhistoryname+': Detail' ;
     let download_people=JSON.parse(localStorage.getItem("people"));
     document.getElementById("download").addEventListener("click", () => {
             let downloadstr="   전화번호     이름\t결제대상\t사용한금액\t 사용한 사람 \n";
