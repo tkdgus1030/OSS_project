@@ -118,10 +118,8 @@ __2. 로그인 후 사용__
   <img width="1440" alt="history_list2" src="https://user-images.githubusercontent.com/76947209/143770786-f7653299-4915-4cdf-aa29-8e533e9d247b.png">
   
 + 그룹 정산 내역 상세페이지
-  <img width="1440" alt="detail" src="https://user-images.githubusercontent.com/76947209/143771053-3eeefd23-422c-431b-aa00-04c3e47b9c50.png">
+  <img width="1440" alt="detail" src="https://user-images.githubusercontent.com/63357094/143771409-6f956d7a-09e4-446c-8f64-4b2db2caa5fb.png">
 
-  <img width="1440" alt="detail_result" src="https://user-images.githubusercontent.com/76947209/143770794-7a500a6b-967c-4101-b3d8-1e12b36e12a2.png">
-  
 + [회원 버전 비디오](https://youtu.be/NEK4u1khsu4) : 다른 예시 버전
 
 
