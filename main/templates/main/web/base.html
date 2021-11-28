@@ -21,20 +21,20 @@
 
 </head>
 <body style="width:100%;height:100%;">
-    <div >
+    <div>
     <nav class="navbar navbar-light bg-light">
       <div class="container">
-          <span style="cursor:pointer;" class="navbar-brand mb-0 h1 pe-auto border" onclick="location.href='{% url 'main:index' %}'">Pay G</span>
+          <span style="cursor:pointer;" class="navbar-brand mb-0 h1 pe-auto" onclick="location.href='{% url 'main:index' %}'">Pay G</span>
           <button  id="usernameshow" class="btn btn-sm btn-primary" ></button>
           
       </div>
-      
+        {% block clear_button %}{% endblock %}
     </nav>
-    <button   id="clearlocalstorage" class="btn btn-sm btn-danger"  style="float: right;">ClearLocalstorage</button>
+{#    <button   id="clearlocalstorage" class="btn btn-sm btn-danger"  style="float: right;">ClearLocalstorage</button>#}
 </div>
 
-<div id="content" style="width:100%;height:100%;border:1px solid blue;text-align: center" class="d-flex justify-content-around border">
-    <div class="border w-100">
+<div id="content" style="width:100%;height:100%;text-align: center" class="d-flex justify-content-around">
+    <div class=" w-100">
         {% block body %}
         {% endblock %}
     </div>
