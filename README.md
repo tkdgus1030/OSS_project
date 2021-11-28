@@ -132,10 +132,36 @@ __2. 로그인 후 사용__
 ## Versions
 
 ---
-
 + version 0.0.0 : 백엔드가 필요하지 않는 부분 프론트엔드 구현
-+ version 1.0.0 : 백엔드(유저, 그룹, 히스토리 데이터 베이스) 구현
-+ version 2.0.0 : 백엔드, 데이터베이스 구현과 프론트엔드 구현 및 버그 수정
++ version 1.0.0 : 백엔드(유저, 그룹, 히스토리 데이터 베이스) 구현 시작
++ version 1.0.1 : 로그인 구현(아직 user data가 구현되지 않아 올바은 phone.No / PW인지 구별은 할 수 없음)
++ version 1.1.0 : 로그인 기능 보완, 사용자 database를 불러와 존재하는 휴대폰 번호와 비밀번호를 입력해야만 로그인 되도록 설정
++ version 1.2.0 : 회원가입 구현 및 temp_calculate의 delete 기능, 계산 기능 구현
++ version 1.2.1 : 회원가입 구현 및 버그 제거
++ version 1.3.0 : 그룹 리스트 표시 구현
++ version 1.4.0 : 그룹 생성 및 사용자별 그룹 리스트 표시 구현
++ version 1.4.1 : group create에서 멤버 수 추가, 삭제 기능 구현, 중복된 group 체크, 입력한 멤버가 올바른지(전화번호, 이름이 실제로 존재하는지) 체크하는 기능 구현
++ version 1.4.2 : 그룹 생성시 자기자신도 포함하도록 수정
++ version 1.4.3 : Group list에서 history로 link하는 과정 구현 및 Group list를 database와 연동
++ version 1.4.4 : Group list에서 생성되는 tr이 child tr이 맨 처음 tr의 class, type, 형식 등을 상속받도록 수정
++ version 1.5.0 : history list와 group 연동, history list에 새로운 history 추가하는 기능 구현
++ version 2.0.0 : 백엔드 alpha 완료 및 다운로드 기능, calculate와 localstorage 연동 구현, 프론트엔드 구현 및 버그 수정 시작
++ version 2.1.0 : 결과보기 창 제외 대부분의 html css js의 디자인 수정 완료
++ version 2.2.0 : 모든 html의 디자인 구현과 결과 보기 창의 송금 내역 완료
++ version 2.3.0 : CSS정돈, local storage clear button 코드 위치 수정, 초기화버튼 추가, localstorage버튼 삭제
++ version 2.3.1 : 이전 버전에서 발생한 오류 수정
++ version 2.3.2 ~ 2.3.5: Bug 발생으로 인해 2.3.1로 Revert
++ version 2.3.6 : 썸네일 thumbnail.png 제작 및 추가
++ version 2.4.0 : History_detail.html 백엔드 연동 구현 시작
++ version 2.4.1 : History_list.html css 완성, 모든 css 완료
++ version 2.4.2 ~ 2.4.4 : History_detail.html 수정
++ version 2.5.0 : History_detail.html과 Calculate_group.js간 DB연동
++ version 2.5.1 : 2.5.0 버그수정
++ version 2.6.0 : History_detail.html에서 히스토리.txt 다운로드 기능 구현
++ version 2.6.1 : home.html에서 로그아웃 기능 구현
++ version 2.7.0 : History_detail.html에 DB에 맞게 정산 내역 표시 구현
++ version 2.7.1 : History_detail.html에서 다운로드 버튼이 비정상적으로 표시되는 버그 수정
++ version 2.7.2 : History_detail.html UI 개선
 + version 3.0.0 : 모든 기능 구현
 
 <br><br>
