@@ -24,6 +24,8 @@ for(let i=0;i<people.length;i++){
 function saveRes(){
     console.log(res_table);
     localStorage.setItem("resTable", JSON.stringify(res_table));
+    localStorage.setItem("calculateresult",JSON.stringify(res_table));
+
 };
 
 function del_(name, btn_obj){
