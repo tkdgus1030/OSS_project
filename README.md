@@ -41,7 +41,7 @@ $ python --version
 __0. git clone__
 
 ```bash
-$ git clone https://github.com/tkdgus1030/OSS_project
+$ git clone https://github.com/tkdgus1030/OSS_project.git
 
 ```
 
