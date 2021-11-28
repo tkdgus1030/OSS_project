@@ -9,7 +9,7 @@
 <div>
     <span  style="font-size: 120%;"></span>
 </div>
-<a class="btn btn_design1" style="width:30%; margin-bottom: 40px; margin-top: 20px" href="#result" onclick="result()">결과보기</a>
+<a class="btn btn_design1" style="width:30%; margin-bottom: 40px; margin-top: 20px" >결과보기</a>
 <div>
     <table class="cal_table" style="margin:30px auto;">
         <tr>
@@ -59,8 +59,10 @@
     let historyid=JSON.parse(localStorage.getItem("historyid"));
     let groupid=JSON.parse(localStorage.getItem("curgroup"));
     let historydatabase=JSON.parse(localStorage.getItem("historydatabase"));
+    people = JSON.parse(localStorage.getItem("people"));
     let historycomponent
     let curhistoryname
+    let download_people = JSON.parse(localStorage.getItem("people"));
     //console.log(historyid)
     historydatabase[groupid].forEach(history => {
         //console.log(history.id+"" ,historyid.split("history")[1])
@@ -71,14 +73,22 @@
         }
     });
     let historytitle = document.getElementById("historytitle");
-    //console.log(historytitle);
+    console.log( historycomponent,1111111111);
     historytitle.innerHTML= "History List - " + groupid+ ' - ' + curhistoryname+': Detail' ;
     
     document.getElementById("download").addEventListener("click", () => {
             //console.log(1231441)
-            download("History List - " + groupid+ ' - ' + curhistoryname+': Detail', historycomponent);
+            let downloadstr="   전화번호     이름\t결제대상\t사용한금액\n";
+            console.log(historycomponent,12313)
+            historycomponent.forEach((person__,i)=>{
+                person__.forEach(element => {
+                    console.log(download_people)
+                    downloadstr+=download_people[i][0]+" "+download_people[i][1]+"\t"+element[0]["object"]+"\t"+element[0]["amount"]+"\n";
+                });
+            })
+            download("History List - " + groupid+ ' - ' + curhistoryname+': Detail', downloadstr);
     });
-    people = JSON.parse(localStorage.getItem("people"));
+    
     res_table=historycomponent;
     people=people.filter(person =>{
         return person[1];
