@@ -186,18 +186,7 @@ __2. 로그인 후 사용__
 
 ## License
 
-
-
-+ Permissions
-  - Distribution
-  - Modification
-  - Private use
-+ Conditions
-  - License and copyright notice
-+ Limitations
-  - Commercial use
-  - Liability
-  - Warranty
+[MIT License](https://github.com/tkdgus1030/OSS_project/blob/main/LICENSE)
 
 
 
