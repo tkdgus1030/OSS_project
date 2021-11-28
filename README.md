@@ -4,7 +4,6 @@ Open Source Software Project
 
 Team 10: 김세란, 김예린 박상현
 
-<br><br>
 
 ## Brief Overview
 
