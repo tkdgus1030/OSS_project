@@ -26,10 +26,46 @@ Pay G로 더욱 편안한 돈계산을 해보세요!
 ## 설치 방법
 
 ---
+0. python 설치(3이상)
+```bash
+python --version
+# Python 3.8.8 
 
-+ 블라블라
-+ 블라블라
+```
+1. venv 설치 
 
+root에 설치 권장한다.
+
+```bash
+python -m venv venv
+# python3 -m venv venv 
+```
+2. requirements.txt 설치
+
+```bash
+pip install -r requirements.txt
+```
+3. 로컬 서버 실행
+
+manage.py 가 있는 root에서 명령어 입력
+
+```bash
+ls
+# README.md        db.sqlite3       main             manage.py        payG             requirements.txt venv
+
+python manave.py runserver
+# System check identified no issues (0 silenced).
+# November 28, 2021 - 04:01:09
+# Django version 3.2.9, using settings 'payG.settings'
+# tarting development server at http://127.0.0.1:8000/
+# Quit the server with CONTROL-C.
+```
+
+4. 로컬 서버 접속
+
+해당 예시에서는 다음과 같은 url로 접속하면 된다.
+
+http://127.0.0.1:8000/
 
 ## 예시 및 스크린샷
 
