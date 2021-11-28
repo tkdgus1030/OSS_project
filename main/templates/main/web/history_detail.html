@@ -19,7 +19,7 @@
     </table>
 </div>
 <a class="btn btn_design1" style="width:30%; margin-bottom: 40px; margin-top: 20px" href="#result" onclick="result()">결과보기</a>
-<div class="" id="result" style="margin:50px 0px;height:100px;">
+<div class="" id="result" style="margin:50px 0px;">
     <div style="width: 50%;background-color: lightgrey; border-radius: 20px;margin: auto;">
         <div class="res_div1" style="text-align: center; font-weight: bold; font-size: 20px;"></div>
         <table class="res_table table table-borderless" style="margin: 15px auto;">
@@ -28,11 +28,12 @@
         <div class = "res_div3"></div>
         <div class = "res_div4"></div>
     </div>
+    <br>
+<div><button  id="download" class="download btn btn-sm btn-primary" >히스토리 다운로드</button>
+</div>
 </div>
 <br>
-<br>
-<br>
-<button  id="download" class="download btn btn-sm btn-primary" >히스토리 다운로드</button>
+
 <script>
 
     function download(filename, text) {
