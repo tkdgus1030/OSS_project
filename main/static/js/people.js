@@ -3,16 +3,18 @@ const Type = {
 };
 let people = [];
 
-// function loadPeople() {
-//     let lastPeople = localStorage.getItem("people");
-//     if (!lastPeople) return;
-//
-//     people = JSON.parse(lastPeople);
-//     people.forEach(addToList);
-// }
+function loadPeople() {
+    let lastPeople = localStorage.getItem("people");
+    if (!lastPeople) return;
+
+    people = JSON.parse(lastPeople);
+    people.forEach(addToList);
+}
 window.addEventListener("load", () => {
     localStorage.removeItem("curusername");
     localStorage.removeItem("curuser");
+
+    loadPeople();
 });
 function next(e){
     let url = e.getAttribute('url');
@@ -23,9 +25,15 @@ function next(e){
     }
 }
 
+function clear_and_load(){
+    localStorage.clear();
+    people = [];
+    savePeople();
+    $('#peopleList').html('');
+}
+
 
 function savePeople() {
-
     localStorage.setItem("people", JSON.stringify(people));
 }
 

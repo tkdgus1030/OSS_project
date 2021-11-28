@@ -21,20 +21,19 @@
 
 </head>
 <body style="width:100%;height:100%;">
-    <div >
+    <div>
     <nav class="navbar navbar-light bg-light">
       <div class="container">
-          <span style="cursor:pointer;" class="navbar-brand mb-0 h1 pe-auto border" onclick="location.href='{% url 'main:index' %}'">Pay G</span>
+          <span style="cursor:pointer;" class="navbar-brand mb-0 h1 pe-auto" onclick="location.href='{% url 'main:index' %}'">Pay G</span>
           <button  id="usernameshow" class="btn btn-sm btn-primary" ></button>
           
       </div>
-      
     </nav>
-    <button   id="clearlocalstorage" class="btn btn-sm btn-danger"  style="float: right;">ClearLocalstorage</button>
-</div>
+    {% block clear_button %}{% endblock %}
+    </div>
 
-<div id="content" style="width:100%;height:100%;border:1px solid blue;text-align: center" class="d-flex justify-content-around border">
-    <div class="border w-100">
+<div id="content" style="width:100%;height:100%;text-align: center" class="d-flex justify-content-around">
+    <div class=" w-100">
         {% block body %}
         {% endblock %}
     </div>
@@ -53,13 +52,11 @@
         iddispbutton.style.display = "none";
         iddispbutton.disabled = true;
     }
-    let clearlocalstorage = document.querySelector("#clearlocalstorage");
-    clearlocalstorage.addEventListener("click", () => {localStorage.clear();console.log('clear')})
-    /*let data = localStorage.getItem("datas");
-        if (!data) data=[2];
-        else data = JSON.parse(data);
-    
-    */
+    {#let clearlocalstorage = document.querySelector("#clearlocalstorage");#}
+    {#clearlocalstorage.addEventListener("click", () => {#}
+    {#    localStorage.clear();#}
+    {#    console.log('localStorage Cleared:');#}
+    {#    console.log(localStorage);});#}
 </script>
 </body>
 {% block script %}
