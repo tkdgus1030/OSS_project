@@ -5,58 +5,66 @@
 
 {% endblock %}
 {% block body %}
-<h1 id="historytitle">History List - Group 1 - History Detail 0 </h1>
-<div>
-    <span  style="font-size: 120%;"></span>
-</div>
-<a class="btn btn_design1" style="width:30%; margin-bottom: 40px; margin-top: 20px" >결과보기</a>
-<div>
-    <table class="cal_table" style="margin:30px auto;">
-        <tr>
-            <th>결제한사람</th>
-            <th>결제 대상</th>
-            <th>결제 금액</th>
 
-            <th><div id="people_list" class="row-vh d-flex flex-row justify-content-between" style="flex-grow:1"></div></th>
-            <th></th>
-        </tr>
-
-    </table>
-</div>
-<div class="border" id="result" style="margin:50px 0px;height:100px;">
-    <div style="width: 50%;background-color: lightgrey; border-radius: 20px;margin: auto;">
-        <div class="res_div1" style="text-align: center; font-weight: bold; font-size: 20px;"></div>
-        <table class="res_table table table-borderless" style="margin: 15px auto;">
-        </table>
-        <div class = "res_div2"></div>
-        <div class = "res_div3"></div>
-        <div class = "res_div4"></div>
+    <div style="margin-top: 100px;margin-bottom: 40px">
+        <h1 id="historytitle"></h1>
     </div>
-</div>
-<br>
-<br>
-<br>
-<button  id="download" class="download btn btn-sm btn-primary" >히스토리 다운로드</button>
-<script>
-   
+    <div>
+        <span style="font-size: 120%;"></span>
+    </div>
+    <a class="btn btn_design1" style="width:30%; margin-bottom: 40px; margin-top: 20px">결과보기</a>
+    <div>
+        <table class="cal_table" style="margin:30px auto;">
+            <tr>
+                <th>결제한사람</th>
+                <th>결제 대상</th>
+                <th>결제 금액</th>
+
+                <th>
+                    <div id="people_list" class="row-vh d-flex flex-row justify-content-between"
+                         style="flex-grow:1"></div>
+                </th>
+                <th></th>
+            </tr>
+
+        </table>
+    </div>
+    <div id="result" style="margin:50px 0px;height:100px;">
+        <div style="width: 50%;background-color: lightgrey; border-radius: 20px;margin: auto;">
+            <div class="res_div1" style="text-align: center; font-weight: bold; font-size: 20px;"></div>
+            <table class="res_table table table-borderless" style="margin: 15px auto;">
+            </table>
+            <div class="res_div4"></div>
+        </div>
+        <div class="res_div2"></div>
+        <div class="res_div3"></div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <button id="download" class="download btn btn_design2" style="width: 30%; margin-top: 40px; margin-bottom: 70px">
+        히스토리 다운로드
+    </button>
+
+    <script>
 
 
-    function download(filename, text) {
-			var pom = document.createElement('a');
-			pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-			pom.setAttribute('download', filename);
-		
-			if (document.createEvent) {
-				var event = document.createEvent('MouseEvents');
-				event.initEvent('click', true, true);
-				pom.dispatchEvent(event);
-			}
-			else {
-				pom.click();
-			}
-	}
-    //console.log(JSON.parse(localStorage.getItem("people")));
-    let historyid=JSON.parse(localStorage.getItem("historyid"));
+        function download(filename, text) {
+            var pom = document.createElement('a');
+            pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            pom.setAttribute('download', filename);
+
+            if (document.createEvent) {
+                var event = document.createEvent('MouseEvents');
+                event.initEvent('click', true, true);
+                pom.dispatchEvent(event);
+            } else {
+                pom.click();
+            }
+        }
+
+        //console.log(JSON.parse(localStorage.getItem("people")));
+        let historyid = JSON.parse(localStorage.getItem("historyid"));
     let groupid=JSON.parse(localStorage.getItem("curgroup"));
     let historydatabase=JSON.parse(localStorage.getItem("historydatabase"));
     people = JSON.parse(localStorage.getItem("people"));

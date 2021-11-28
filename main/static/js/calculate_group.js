@@ -10,24 +10,29 @@ function createArray(rows, columns) {
 }
 
 
-
 //localStorage에 저장된 사람들 이름을 people 배열에 string요소로 담음.
 let people = JSON.parse(localStorage.getItem("people"));
 var res_table = createArray(people.length, people.length);
-for(let i=0;i<people.length;i++){
-    for(let j=0; j< people < length; j++)
-    {
-        res_table[i][j]=[];
+for (let i = 0; i < people.length; i++) {
+    for (let j = 0; j < people < length; j++) {
+        res_table[i][j] = [];
     }
 }
+var calculateresult = [];
+for (let i = 0; i < people.length; i++) {
+    calculateresult.push([]);
+}
 
-function saveRes(){
+function saveRes() {
+    console.log('saveres');
     console.log(res_table);
+    console.log(calculateresult);
     localStorage.setItem("resTable", JSON.stringify(res_table));
-    localStorage.setItem("calculateresult", JSON.stringify(res_table));
+    localStorage.setItem("calculateresult", JSON.stringify(calculateresult));
 };
 
-function del_(name, btn_obj){
+function del_(name, btn_obj) {
+    //나중에
     let del_tr_obj = btn_obj.parentNode.parentNode;
     let checked_boxes = del_tr_obj.children[3].children[0].childNodes;
     let object_txt = del_tr_obj.children[1].innerText;
@@ -45,11 +50,14 @@ function del_(name, btn_obj){
     // remove data in localStorage
     let from = people.indexOf(name);
     let n = checked_people.length;
-    checked_people.forEach((p)=>{
+    checked_people.forEach((p) => {
         let to = people.indexOf(p)
-        let ele = {'object':object_txt ,'amount':amount_float};
+        let ele = {'object': object_txt, 'amount': amount_float};
         res_table[from][to].pop(ele);
     });
+    let ele2 = {'object': object_txt, 'amount': amount_float * n, 'checked_people': checked_people}
+    calculateresult[people.indexOf(name)].pop(ele2);
+    ;
     saveRes();
 
     //tr 삭제
@@ -81,17 +89,17 @@ function add_(name, btn_obj){
     }
 
     //save to localStorage
-    console.log(checked_people);
     let from = people.indexOf(name);
     let n = checked_people.length;
-    checked_people.forEach((p)=>{
+    checked_people.forEach((p) => {
         let to = people.indexOf(p)
         let amount = amount_input.value / n;
         let object = object_input.value;
-        let ele = {'object':object ,'amount':amount};
-        console.log(ele,res_table)
+        let ele = {'object': object, 'amount': amount};
         res_table[from][to].push(ele);
     });
+    let ele2 = {'object': object_input.value, 'amount': amount_input.value, 'checked_people': checked_people};
+    calculateresult[from].push(ele2);
     saveRes();
 
     // localStorage.setItem()
@@ -238,7 +246,8 @@ function result(){
     $('.res_div2').html('<br>')
     $('.res_div3').html('<br>')
     $('.res_div4').html('<br>')
-    
+
+
     let remittance = [];
     let total = 0;
 
@@ -330,7 +339,6 @@ function result(){
 window.addEventListener("load", () => {
     people_rawdata = JSON.parse(localStorage.getItem("people"));
     people=people_rawdata.map(person =>{
-        console.log(person[1])
         return person[1];
     })
     //localStorage.clear();

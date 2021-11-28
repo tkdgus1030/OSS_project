@@ -237,6 +237,7 @@ function result(){
     $('.res_div2').html('<br>')
     $('.res_div3').html('<br>')
     $('.res_div4').html('<br>')
+    $('.res_div5').html('<br>')
     
     let remittance = [];
     let total = 0;
