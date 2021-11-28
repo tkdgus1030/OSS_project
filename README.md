@@ -156,6 +156,8 @@ __2. 로그인 후 사용__
 + version 2.7.0 : History_detail.html에 DB에 맞게 정산 내역 표시 구현
 + version 2.7.1 : History_detail.html에서 다운로드 버튼이 비정상적으로 표시되는 버그 수정
 + version 2.7.2 : History_detail.html UI 개선
++ version 2.8.0 : 다운로드 기능 구현 완료
++ version 2.8.1 : History_detail.html title표시 버그 수정
 + version 3.0.0 : 모든 기능 구현
 
 
