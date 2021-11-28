@@ -327,7 +327,9 @@ function result(){
 }
 window.addEventListener("load", () => {
     people = JSON.parse(localStorage.getItem("people"));
-    localStorage.clear();
+    //localStorage.clear();
+    localStorage.removeItem("curuser");
+    localStorage.removeItem("curusername");
     res_table = createArray(people.length, people.length);
     for(let i=0;i<people.length;i++){
         for(let j=0; j< people < length; j++)
