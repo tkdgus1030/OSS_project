@@ -32,40 +32,47 @@
                 <th>결제한사람</th>
                 <th>결제 대상</th>
                 <th>결제 금액</th>
-    
-                <th><div id="people_list" class="row-vh d-flex flex-row justify-content-between" style="flex-grow:1"></div></th>
+
+                <th>
+                    <div id="people_list" class="row-vh d-flex flex-row justify-content-between"
+                         style="flex-grow:1"></div>
+                </th>
                 <th></th>
             </tr>
-    
+
         </table>
     </div>
     <div>
-        <a class="btn btn_design1" style="width:30%; margin-bottom: 40px; margin-top: 20px" href="#result" onclick="result()">결과보기</a>
-    </div>  
-    <div>
-        <button id="addnewhistory" class="btn btn_design2" style="width: 30%; margin-bottom: 50px">그룹에 추가하기</button>
+        <a class="btn btn_design1" style="width:30%; margin-bottom: 40px; margin-top: 20px" href="#result"
+           onclick="result()">결과보기</a>
     </div>
-    
+    <div>
+        <button id="addnewhistory" class="btn btn_design2" style="width: 30%; margin-bottom: 50px">히스토리에 추가하기</button>
+    </div>
+
     <div class="border" id="result" style="margin:50px 0px;">
         <div style="width: 50%;background-color: lightgrey; border-radius: 20px;margin: auto;">
             <div class="res_div1" style="text-align: center; font-weight: bold; font-size: 20px;"></div>
             <table class="res_table table table-borderless" style="margin: 15px auto;">
             </table>
-            <div class = "res_div2"></div>
-            <div class = "res_div3"></div>
-            <div class = "res_div4"></div>
+            <div class="res_div4"></div>
+
         </div>
+        <div class="res_div2"></div>
+        <div class="res_div3"></div>
+
     </div>
+
     <br>
     <br>
     <br>
-    
-        
-<script>
-    //console.log(JSON.parse(localStorage.getItem("people")));
-    let historydatabase_add=JSON.parse(localStorage.getItem("historydatabase"));
-    let groupid            =JSON.parse(localStorage.getItem("curgroup"));
-    let groupdatabase      = JSON.parse(localStorage.getItem("group_database"));
+
+
+    <script>
+        //console.log(JSON.parse(localStorage.getItem("people")));
+        let historydatabase_add = JSON.parse(localStorage.getItem("historydatabase"));
+        let groupid = JSON.parse(localStorage.getItem("curgroup"));
+        let groupdatabase = JSON.parse(localStorage.getItem("group_database"));
     let historyname   = document.getElementById("inputhistoryname");
     let addnewhistory = document.getElementById("addnewhistory");
     console.log(historydatabase_add,12321312312)
