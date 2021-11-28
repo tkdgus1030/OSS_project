@@ -200,5 +200,5 @@ __2. 로그인 후 사용__
 
 
 
-+ [비회원 버전 비디오](https://youtu.be/_fTBQUddHy4)
-+ [회원 버전 비디오]
++ [비회원 버전 비디오](https://youtu.be/coTLcfuYR0M)
++ [회원 버전 비디오](https://youtu.be/NEK4u1khsu4)
