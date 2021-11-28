@@ -1,15 +1,10 @@
 {% extends 'main/web/base.html' %}
 {% load static %}
-{% block script %}
-    <script src="{% static 'js/calculate_group.js' %}"></script>
-
-{% endblock %}
 {% block body %}
 <h1 id="historytitle">History List - Group 1 - History Detail 0 </h1>
 <div>
     <span  style="font-size: 120%;"></span>
 </div>
-<a class="btn btn_design1" style="width:30%; margin-bottom: 40px; margin-top: 20px" href="#result" onclick="result()">결과보기</a>
 <div>
     <table class="cal_table" style="margin:30px auto;">
         <tr>
@@ -23,7 +18,8 @@
 
     </table>
 </div>
-<div class="border" id="result" style="margin:50px 0px;height:100px;">
+<a class="btn btn_design1" style="width:30%; margin-bottom: 40px; margin-top: 20px" href="#result" onclick="result()">결과보기</a>
+<div class="" id="result" style="margin:50px 0px;height:100px;">
     <div style="width: 50%;background-color: lightgrey; border-radius: 20px;margin: auto;">
         <div class="res_div1" style="text-align: center; font-weight: bold; font-size: 20px;"></div>
         <table class="res_table table table-borderless" style="margin: 15px auto;">
@@ -38,8 +34,6 @@
 <br>
 <button  id="download" class="download btn btn-sm btn-primary" >히스토리 다운로드</button>
 <script>
-   
-
 
     function download(filename, text) {
 			var pom = document.createElement('a');
@@ -55,50 +49,61 @@
 				pom.click();
 			}
 	}
-    //console.log(JSON.parse(localStorage.getItem("people")));
+	//////////////////////////
+    let people;
     let historyid=JSON.parse(localStorage.getItem("historyid"));
     let groupid=JSON.parse(localStorage.getItem("curgroup"));
     let historydatabase=JSON.parse(localStorage.getItem("historydatabase"));
-    let historycomponent
-    let curhistoryname
+    let historycomponent;
+    let res_table;
+    let curhistoryname;
     //console.log(historyid)
     historydatabase[groupid].forEach(history => {
-        //console.log(history.id+"" ,historyid.split("history")[1])
-        if(""+history.id ===historyid.split("history")[1] ){
+        console.log(historyid.split("history")[1] );
+        if(""+history.id === historyid.split("history")[1] ){
             historycomponent=history.component;
+            res_table=JSON.parse(history.res_table);
+            history_people = JSON.parse(history.people);
+            people = history_people.map((ele)=>{
+                return ele[1];
+            });
             curhistoryname=history.name
             //console.log(history);
         }
     });
+    /////// people, res_table 변수 받아옴.----------
+
+    ////////
     let historytitle = document.getElementById("historytitle");
-    //console.log(historytitle);
+    {#console.log(historytitle);#}
     historytitle.innerHTML= "History List - " + groupid+ ' - ' + curhistoryname+': Detail' ;
     
     document.getElementById("download").addEventListener("click", () => {
             //console.log(1231441)
             download("History List - " + groupid+ ' - ' + curhistoryname+': Detail', historycomponent);
     });
-    people = JSON.parse(localStorage.getItem("people"));
-    res_table=historycomponent;
-    people=people.filter(person =>{
-        return person[1];
-    })
-    setTable();
-    result();
-    
-    function setTable() {
-    let first_row_people_list = $('#people_list');
-    people.forEach((ele)=>{
-        let div = document.createElement("div");
-        div.className = "person";
-        div.innerText = ele;
-        first_row_people_list.append(div);
+    //////// 제목 ---------
 
-        let tr = make_input_tr(ele);
-        $('.cal_table').append(tr);
-    })
+
+    ///// table setting
+    function setTable3(){
+        let first_row_people_list = $('#people_list');
+        people.forEach((ele)=>{
+            let div = document.createElement("div");
+            div.className = "person";
+            div.innerText = ele;
+            first_row_people_list.append(div);
+            let from = people.indexOf(ele);
+            for(let i=0;i<historycomponent[from].length;i++){
+                console.log(historycomponent[from][i]);
+                let tr = make_input_tr2(ele,historycomponent[from][i] );
+                $('.cal_table').append(tr);
+            }
+        });
     }
-    function make_input_tr(name){
+    setTable3();
+
+    function make_input_tr2(name,object){
         //tr
         let tr = document.createElement('tr');
         //input_tr의 경우 각 사람의 이름을 id로 한다.
@@ -106,13 +111,13 @@
         //name_column
         tr.append(make_name_td(name));
         //object_column
-        tr.append(make_object_td());
+        tr.append(make_object_td(object['object']));
         //amount_column
-        tr.append(make_amount_td());
+        tr.append(make_amount_td(object['amount']));
         //checkbox_column
-        tr.append(make_checkbox_td());
+        tr.append(make_checkbox_td(object['checked_people']));
         //button_column
-        tr.append(make_button_td(name));
+        tr.append('');
         return tr;
     }
     function make_object_td(value=''){
@@ -200,62 +205,104 @@ function make_button_td(name,value='+'){
     button_td.append(btn);
     return button_td;
 }
-    function result(){
-        $('.res_div1').html('<br><p>송금 내역</p>');
-        $('.res_table').html(' <tr>\n' +
-            '                <th>이름</th>\n' +
-            '                <th>결제한 금액</th>\n' +
-            '                <th>사용 금액</th>\n' +
-            '                <th>총</th>\n' +
-            '            </tr><br>');
-        $('.res_div2').html('<br>')
-        $('.res_div3').html('<br>')
-        $('.res_div4').html('<br>')
-        
-        let remittance = [];
-        let total = 0;
+function result(){
+    $('.res_div1').html('<br><p>송금 내역</p>');
+    $('.res_table').html(' <tr>\n' +
+        '                <th>이름</th>\n' +
+        '                <th>결제한 금액</th>\n' +
+        '                <th>사용 금액</th>\n' +
+        '                <th>총</th>\n' +
+        '            </tr><br>');
+    $('.res_div2').html('<br>')
+    $('.res_div3').html('<br>')
+    $('.res_div4').html('<br>')
 
-        for(let p1 = 0 ; p1 < people.length; p1++){
-            let tr = document.createElement('tr');
-            let name_td = document.createElement('td');
-            let name_div = document.createElement('div');
-            name_div.append(people[p1]);
-            name_td.append(name_div);
-            let td2 = document.createElement('td');
-            let td2_div = document.createElement('div');
-            let res1= 0;
-            res_table[p1].forEach((arr)=>{
-                arr.forEach((ele)=>{
-                    res1 += ele.amount;
-                })
+    let remittance = [];
+    let total = 0;
+
+    for(let p1 = 0 ; p1 < people.length; p1++){
+        let tr = document.createElement('tr');
+        let name_td = document.createElement('td');
+        let name_div = document.createElement('div');
+        name_div.append(people[p1]);
+        name_td.append(name_div);
+        let td2 = document.createElement('td');
+        let td2_div = document.createElement('div');
+        let res1= 0;
+        res_table[p1].forEach((arr)=>{
+            arr.forEach((ele)=>{
+                res1 += ele.amount;
             })
-            total += res1;
-            
-            td2_div.append(res1);
-            td2.append(td2_div);
-            let td3 = document.createElement('td');
-            let td3_div = document.createElement('div');
-            let res2 = 0;
-            for(let p2 =0;p2< people.length;p2++){
-                res_table[p2][p1].forEach((ele)=>{
-                    res2 += ele.amount;
-                })
+        })
+        total += res1;
+
+        td2_div.append(res1);
+        td2.append(td2_div);
+        let td3 = document.createElement('td');
+        let td3_div = document.createElement('div');
+        let res2 = 0;
+        for(let p2 =0;p2< people.length;p2++){
+            res_table[p2][p1].forEach((ele)=>{
+                res2 += ele.amount;
+            })
+        }
+
+        td3_div.append(res2);
+        td3.append(td3_div);
+        let td4 = document.createElement('td');
+        let td4_div = document.createElement('div');
+        let res3 = res1 - res2;
+        remittance[p1] = [p1, res3];
+
+        td4_div.append(res3);
+        td4.append(td4_div);
+        tr.append(name_td);
+        tr.append(td2);
+        tr.append(td3);
+        tr.append(td4);
+        $('.res_table').append(tr);
+    }
+
+    let total_div = document.createElement('div');
+    total_div.className = "total_string";
+    let tstring = `총 금액은 ${total}원! `;
+    total_div.append(tstring);
+    $('.res_div2').append(total_div);
+
+    remittance.sort((a, b) => a[1] - b[1]);
+
+    for(let i = 0 ; i < people.length; i++){
+        if (remittance[i][1] >= 0) {
+            break;
+        }
+        for (let j = people.length - 1; j > -1; j--){
+            if (remittance[j][1] === 0 || i === j) {
+                continue;
             }
-            
-            td3_div.append(res2);
-            td3.append(td3_div);
-            let td4 = document.createElement('td');
-            let td4_div = document.createElement('div');
-            let res3 = res1 - res2;
-            remittance[p1] = [p1, res3];
-            
-            td4_div.append(res3);
-            td4.append(td4_div);
-            tr.append(name_td);
-            tr.append(td2);
-            tr.append(td3);
-            tr.append(td4);
-            $('.res_table').append(tr);
+            let rem = remittance[j][1] + remittance[i][1];
+
+            if (rem >= 0){
+                let rem_div = document.createElement('div');
+                rem_div.className = "remittance result_string";
+                let string = `${people[remittance[i][0]]}은(는) ${people[remittance[j][0]]}에게 ${-remittance[i][1]}원 송금!`;
+                rem_div.append(string);
+                $('.res_div3').append(rem_div);
+                //console.log(`${people[remittance[i][0]]}은(는) ${people[remittance[j][0]]}에게 ${-remittance[i][1]}원 송금!`);
+                remittance[i][1] = 0;
+                remittance[j][1] = rem;
+                break;
+            } else {
+                let rem_div = document.createElement('div');
+                rem_div.className = "remittance result_string";
+                let string = `${people[remittance[i][0]]}은(는) ${people[remittance[j][0]]}에게 ${remittance[j][1]}원 송금!`;
+                rem_div.append(string);
+                $('.res_div3').append(rem_div);
+                //console.log(`${people[remittance[i][0]]}은(는) ${people[remittance[j][0]]}에게 ${remittance[j][1]}원 송금!`);
+                remittance[i][1] = rem;
+                remittance[j][1] = 0;
+            }
+        }
+
     }
 }
 </script>
