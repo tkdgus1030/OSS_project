@@ -92,7 +92,7 @@ __예시__ : 팀프로젝트를 위해 만나, 즐거운 시간을 가진 3명! 
 __1. 로그인없이 사용__
 
 + 메인 화면
-  <img width="1440" alt="main" src="https://user-images.githubusercontent.com/76947209/143733386-80495f1c-c08e-4a9f-931a-3857672f6f27.png">
+  <img width="1440" alt="main" src="https://user-images.githubusercontent.com/76947209/143770891-7043fbe3-3768-46d6-8ce9-921689188330.png">
 
 + 멤버 추가
   <img width="1440" alt="people" src="https://user-images.githubusercontent.com/76947209/143733392-0ce418c2-af93-4bee-a07a-c4c2ef4803b3.png">
@@ -109,14 +109,17 @@ __1. 로그인없이 사용__
 __2. 로그인 후 사용__
 
 + 로그인
- <img width="1440" alt="people" src="https://user-images.githubusercontent.com/76947209/143733392-0ce418c2-af93-4bee-a07a-c4c2ef4803b3.png">
+  <img width="1440" alt="log_in" src="https://user-images.githubusercontent.com/76947209/143770774-5ca17ff1-3d4c-4e56-b01e-7dd4010f312e.png">
+
 + 그룹 리스트
+  <img width="1440" alt="group_list2" src="https://user-images.githubusercontent.com/76947209/143770783-c0f1bc0a-9cfb-4af6-bb4b-75a79cf771c7.png">
 
- <img width="1440" alt="people" src="https://user-images.githubusercontent.com/63357094/143770808-2db86a9c-8179-45f6-846c-2d7329ec6fc3.png">
 + 그룹 정산 내역 리스트
-
- <img width="1440" alt="people" src="https://user-images.githubusercontent.com/63357094/143770845-ef2b2dfa-b4d6-4eb9-8205-79f5c9653d0d.png">
+  <img width="1440" alt="history_list2" src="https://user-images.githubusercontent.com/76947209/143770786-f7653299-4915-4cdf-aa29-8e533e9d247b.png">
+  
 + 그룹 정산 내역 상세페이지
+  <img width="1440" alt="group_create" src="https://user-images.githubusercontent.com/76947209/143770792-e4293275-b42f-4d71-9a5d-96c0e23475a8.png">
+  <img width="1440" alt="detail_result" src="https://user-images.githubusercontent.com/76947209/143770794-7a500a6b-967c-4101-b3d8-1e12b36e12a2.png">
 
 <img width="1440" alt="people" src="https://user-images.githubusercontent.com/76947209/143733392-0ce418c2-af93-4bee-a07a-c4c2ef4803b3.png">
 + [회원 버전 비디오](https://youtu.be/NEK4u1khsu4)
