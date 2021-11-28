@@ -1,6 +1,7 @@
 # Pay G
 ![main_picture](https://user-images.githubusercontent.com/63357094/143764869-53d2e934-7273-4ac2-9c8e-ad0e5ec23c81.png)
 Open Source Software Project
+
 Team 10: 김세란, 김예린 박상현
 
 <br><br>
