@@ -1,16 +1,15 @@
 {% extends 'main/web/base.html' %}
 {% load static %}
 
-
-{% block clear_button %}
-        <button   id="clearlocalstorage" class="btn btn-sm btn-danger"  style="float: right;">ClearLocalstorage</button>
-{% endblock %}
 {% block script %}
     <script src="{% static 'js/people.js' %}"></script>
 
 {% endblock %}
 {% block clear_button %}
-    <button   id="clearlocalstorage" class="btn btn-sm btn-danger"  style="float: right;">ClearLocalstorage</button>
+    <br>
+    <div style="text-align:center;">
+        <button   id="clearlocalstorage" onclick="clear_and_load();" class="btn btn-sm btn-danger"  style='margin:0px auto;'>초기화</button>
+    </div>
 {% endblock %}
 {% block body %}
     <div style="margin-top: 100px;margin-bottom: 40px">
@@ -32,7 +31,7 @@
             </div>
         </div>
         <div id="peopleList" style="width:100%;text-align: center">
-            <div class="people p-1 rounded-2 ps-2 d-flex align-items-center">
+            <div  class="people p-1 rounded-2 ps-2 d-flex align-items-center">
                 
             </div>
         </div>
