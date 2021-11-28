@@ -8,7 +8,7 @@
     </div>
     <div class="container-sm" style="width:35%;height:80%;text-align: center;">
         <table id = "userhistorylist" style="width: 100%; margin-bottom: 30px">
-            <tr id="createnewhistory" onclick="location.href='{% url 'main:calculate' %}'" >
+            <tr id="createnewhistory_id" onclick="location.href='{% url 'main:calculate' %}'" >
                 <td class="btn btn_design3" style="text-align: center; width: 100%; background-color: lightgrey;">      +      </td>
             </tr>
             <tr style="height: 40px">
@@ -25,16 +25,17 @@
     let groupid=JSON.parse(localStorage.getItem("curgroup"));
     let historydatabase=JSON.parse(localStorage.getItem("historydatabase"));
     let userhistorylist=document.querySelector("#userhistorylist");
-    let createnewhistory=document.querySelector("#createnewhistory");
+    let createnewhistory=document.querySelector("#createnewhistory_id");
     let groupdatabase = JSON.parse(localStorage.getItem("group_database"));
-    //console.log(historydatabase)
+    console.log(historydatabase)
     
     
     historydatabase[groupid].forEach(histroy => {
         let tr = createnewhistory.cloneNode(true);
         tr.setAttribute("onClick", "");
         tr.id=groupid+"history"+histroy.id;
-        tr.className="historydetail btn btn_design3";
+        tr.className="historydetail btn btn_design1";
+        console.log(tr.className)
         tr.childNodes[1].textContent=histroy.name;
         tr.style.width = "100%";
         userhistorylist.appendChild(tr);

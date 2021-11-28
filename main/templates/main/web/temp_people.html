@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block script %}
+    
     <script src="{% static 'js/people.js' %}"></script>
 
 {% endblock %}
@@ -36,7 +37,10 @@
             <button id="next" class="btn btn_design2" style="margin-top: 30px;width: 60%" url="{% url 'main:temp_calculate' %}" onclick="next(this)">다음</button>
         </div>
     </div>
-    
+    <script >
+        localStorage.removeItem("curuser");
+        localStorage.removeItem("curusername");
+    </script>
     <br>
     <br>
     

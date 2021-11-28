@@ -1,7 +1,7 @@
 {% extends 'main/web/base.html' %}
 {% load static %}
 {% block script %}
-    <script src="{% static 'js/calculate.js' %}"></script>
+    <script src="{% static 'js/calculate_group.js' %}"></script>
 
     <script>
      window.addEventListener("load", () => {
@@ -68,7 +68,7 @@
     let groupdatabase      = JSON.parse(localStorage.getItem("group_database"));
     let historyname   = document.getElementById("inputhistoryname");
     let addnewhistory = document.getElementById("addnewhistory");
-    
+    console.log(historydatabase_add,12321312312)
     //console.log(groupdatabase[groupid.split("group")[1]])
     addnewhistory.addEventListener('click', ()=>{
         if(historyname.value===""){
