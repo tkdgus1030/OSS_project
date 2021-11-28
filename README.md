@@ -108,6 +108,14 @@ __1. 로그인없이 사용__
 
 __2. 로그인 후 사용__
 
++ 로그인
+ <img width="1440" alt="people" src="https://user-images.githubusercontent.com/76947209/143733392-0ce418c2-af93-4bee-a07a-c4c2ef4803b3.png">
++ 그룹 리스트
+ <img width="1440" alt="people" src="https://user-images.githubusercontent.com/76947209/143733392-0ce418c2-af93-4bee-a07a-c4c2ef4803b3.png">
++ 그룹 정산 내역 리스트
+ <img width="1440" alt="people" src="https://user-images.githubusercontent.com/76947209/143733392-0ce418c2-af93-4bee-a07a-c4c2ef4803b3.png">
++ 그룹 정산 내역 상세페이지
+<img width="1440" alt="people" src="https://user-images.githubusercontent.com/76947209/143733392-0ce418c2-af93-4bee-a07a-c4c2ef4803b3.png">
 + [회원 버전 비디오](https://youtu.be/NEK4u1khsu4)
 
 
